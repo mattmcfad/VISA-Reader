@@ -1,5 +1,11 @@
 [
 	{
+		"id": 8,
+		"date": "12/19/2015",
+		"description": "AAA Bar",
+		"credit": 99.10
+	},
+	{
 		"id": 7,
 		"date": "12/17/2015",
 		"description": "PATRIA",

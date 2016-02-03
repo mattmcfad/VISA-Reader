@@ -1,14 +1,16 @@
 import React from 'react';
-import Charge from '../components/Charge';
-import mockData from '../mock/data.json';
+import {connect} from 'react-redux';
 
-export class Chart extends React.Component {
+import Charge from '../components/Charge';
+
+const Chart = class extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
 	getData() {
-		return mockData;
+
+		return this.props.charges;
 	}
 
 	render() {
@@ -34,3 +36,11 @@ export class Chart extends React.Component {
 		);
 	}
 }
+
+function mapStateToProps(state) {
+  return {
+    charges: state.get('credit').toJS()
+  };
+}
+
+export default connect(mapStateToProps)(Chart);

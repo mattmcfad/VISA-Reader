@@ -9,10 +9,11 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				include: 'src'
+        exclude: /node_modules/
 			}, {
 				test: /\.jsx$/,
-				loader: 'babel-loader'
+				loader: 'babel-loader',
+        exclude: /node_modules/
 			}, {
         test: /\.json$/,
         loader: 'json-loader',
