@@ -24,10 +24,10 @@ const Chart = class extends React.Component {
 				</thead>
 				<tbody>
 					{this.getData().map(charge =>
-						<Charge key={charge.id}
-							date={charge.date}
-							description={charge.description}
-							credit={charge.credit}
+						<Charge key={charge.get('id')}
+							date={charge.get('date')}
+							description={charge.get('description')}
+							credit={charge.get('credit')}
 						/>
 					)}
 				</tbody>

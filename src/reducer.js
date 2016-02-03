@@ -1,10 +1,10 @@
-import {List, Map} from 'immutable';
+import {List, Map, fromJS} from 'immutable';
 
-const setState = (state, charges) => {
-	return state.set('credit', List(charges));
+export const setState = (state, charges) => {
+	return state.set('credit', List(fromJS(charges)));
 }
 
-const addCharge = (state, charge) => {
+export const addCharge = (state, charge) => {
   // todo
   return state;
 }
