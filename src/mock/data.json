@@ -1,0 +1,44 @@
+[
+	{
+		"id": 7,
+		"date": "12/17/2015",
+		"description": "PATRIA",
+		"credit": 230.47
+	},
+	{
+		"id": 6,
+		"date": "12/14/2015",
+		"description": "METRO #62",
+		"credit": 20.94
+	},
+	{
+		"id": 5,
+		"date": "12/14/2015",
+		"description": "LCBO/RAO #0532",
+		"credit": 51.95
+	},
+	{
+		"id": 4,
+		"date": "12/13/2015",
+		"description": "AAA BAR",
+		"credit": 31.95
+	},
+	{
+		"id": 3,
+		"date": "12/12/2015",
+		"description": "Amazon.ca",
+		"credit": 51.95
+	},
+	{
+		"id": 2,
+		"date": "12/10/2015",
+		"description": "TIM HORTONS 3349 QPS",
+		"credit": 4.95
+	},
+	{
+		"id": 1,
+		"date": "12/09/2015",
+		"description": "Uber BV",
+		"credit": 13.51
+	}
+]

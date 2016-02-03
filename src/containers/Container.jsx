@@ -1,18 +1,12 @@
 import React from "react";
-import HelloWorld from '../components/HelloWorld';
+import {Chart} from './Chart';
 
-class Container extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div className="main-wrapper">
-				<HelloWorld />
-			</div>
-		);
-	}
+const Container = (props) => {
+	return (
+		<div className="main-wrapper">
+			<Chart />
+		</div>
+	);
 }
 
 export default Container;

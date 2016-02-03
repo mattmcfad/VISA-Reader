@@ -5,14 +5,19 @@ module.exports = {
 		filename: 'index.js'
 	},
 	module: {
-		loaders: [{
-			test: /\.js$/,
-			loader: 'babel-loader',
-			include: 'src'
-		}, {
-			test: /\.jsx$/,
-			loader: 'babel-loader'
-		}]
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				include: 'src'
+			}, {
+				test: /\.jsx$/,
+				loader: 'babel-loader'
+			}, {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+		]
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx'],

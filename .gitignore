@@ -1,3 +1,4 @@
 node_modules
 
 client/build/index.js
+mock.csv
