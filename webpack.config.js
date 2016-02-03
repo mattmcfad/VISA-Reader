@@ -1,7 +1,7 @@
 module.exports = {
 	entry: './src/index.jsx',
 	output: {
-		path: 'client/build',
+		path: 'dist/build',
 		filename: 'index.js'
 	},
 	module: {

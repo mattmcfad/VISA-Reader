@@ -1,6 +1,6 @@
-import ReactDOM from "react-dom";
-import React from "react";
+import ReactDOM from 'react-dom';
+import React from 'react';
 
-import Container from "./containers/Container";
+import Container from './containers/Container';
 
-ReactDOM.render(<Container />, document.getElementById("main"));
+ReactDOM.render(<Container />, document.getElementById('main'));

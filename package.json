@@ -1,6 +1,6 @@
 {
   "name": "visa-reader",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "visa parser",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "url": "git+https://github.com/mattmcfad/VISA-Reader-TWO.git"
   },
   "keywords": [
-    "visa"
+    "visa",
+    "react"
   ],
   "author": "@mattmcfad",
   "license": "ISC",

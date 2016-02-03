@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Charge from '../components/Charge';
 import mockData from '../mock/data.json';
 
@@ -10,6 +10,7 @@ export class Chart extends React.Component {
 	getData() {
 		return mockData;
 	}
+
 	render() {
 		return (
 			<table>
