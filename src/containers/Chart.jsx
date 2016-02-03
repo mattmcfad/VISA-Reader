@@ -9,7 +9,6 @@ const Chart = class extends React.Component {
 	}
 
 	getData() {
-
 		return this.props.charges;
 	}
 
@@ -39,7 +38,7 @@ const Chart = class extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    charges: state.get('credit').toJS()
+    charges: state.get('credit')
   };
 }
 

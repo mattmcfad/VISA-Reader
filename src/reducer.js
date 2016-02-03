@@ -1,15 +1,15 @@
 import {List, Map} from 'immutable';
 
-function setState(state, charges) {
+const setState = (state, charges) => {
 	return state.set('credit', List(charges));
 }
 
-function addCharge(state, charge) {
+const addCharge = (state, charge) => {
   // todo
   return state;
 }
 
-export default function(state = Map(), action) {
+export default (state = Map(), action) => {
   switch (action.type) {
 	case 'ADD_CHARGE':
     return addCharge(state, action.charge, action.id);

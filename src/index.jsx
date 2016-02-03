@@ -10,11 +10,11 @@ const store = makeStore();
 
 store.dispatch(setEntries(data));
 
-import Container from './containers/Container';
+import App from './containers/App';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Container />
+    <App />
   </Provider>,
   document.getElementById('main')
 );
