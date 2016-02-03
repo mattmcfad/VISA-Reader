@@ -1,11 +1,11 @@
-var React = require("react");
-var HelloWorld = require('./HelloWorld.jsx');
+import React from "react";
+import HelloWorld from '../components/HelloWorld';
 
 class Container extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	
+
 	render() {
 		return (
 			<div className="main-wrapper">
@@ -15,4 +15,4 @@ class Container extends React.Component {
 	}
 }
 
-module.exports = Container;
+export default Container;
