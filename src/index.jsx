@@ -1,16 +1,14 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import makeStore from './store';
+import { setEntries } from './actions.js';
 
 import data from './mock/data.json';
 
 const store = makeStore();
 
-store.dispatch({
-  type: 'SET_ENTRIES',
-  entries: data
-});
+store.dispatch(setEntries(data));
 
 import Container from './containers/Container';
 
