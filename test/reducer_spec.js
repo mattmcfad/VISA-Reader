@@ -1,7 +1,7 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setState} from '../src/reducer';
+import {setState, addCharge} from '../src/reducer';
 
 describe('Reducer Logic', () => {
 
@@ -30,7 +30,7 @@ describe('Reducer Logic', () => {
         }
       ];
 
-      const nextState = setState(state, charges);
+      const nextState = setState (state, charges);
 
       expect(nextState).to.equal(Map({
         credit: List.of(
@@ -51,6 +51,69 @@ describe('Reducer Logic', () => {
             "date": "12/14/2015",
             "description": "METRO #62",
             "credit": 20.94
+          })
+        )
+      }));
+    });
+  });
+
+  describe('addCharge', () => {
+
+    it('adds new credit card charge', () => {
+      const state = Map();
+      const charge = {
+        "id": 9,
+        "date": "12/21/2015",
+        "description": "QUANTUM COFFEE",
+        "credit": 12.49
+      };
+      const nextState = addCharge(state, charge);
+      expect(nextState).to.equal(Map({
+        credit: List.of(
+          Map({
+            "id": 9,
+            "date": "12/21/2015",
+            "description": "QUANTUM COFFEE",
+            "credit": 12.49
+          })
+        )
+      }));
+    });
+
+    it('append charge to front of list', () => {
+      const state = Map({
+        credit: List.of(
+          Map({
+            "id": 8,
+            "date": "12/19/2015",
+            "description": "AAA Bar",
+            "credit": 99.10
+          })
+        )
+      });
+
+      const newCharge = {
+        "id": 9,
+        "date": "12/21/2015",
+        "description": "QUANTUM COFFEE",
+        "credit": 12.49
+      };
+
+      const nextState = addCharge(state, newCharge);
+
+      expect(nextState).to.equal(Map({
+        credit: List.of(
+          Map({
+            "id": 9,
+            "date": "12/21/2015",
+            "description": "QUANTUM COFFEE",
+            "credit": 12.49
+          }),
+          Map({
+              "id": 8,
+              "date": "12/19/2015",
+              "description": "AAA Bar",
+              "credit": 99.10
           })
         )
       }));

@@ -5,14 +5,18 @@ export const setState = (state, charges) => {
 }
 
 export const addCharge = (state, charge) => {
-  // todo
-  return state;
+  const newCharges = state
+                      .get('credit', List())
+                      .unshift(fromJS(charge));
+
+  return state.set('credit', newCharges);
+
 }
 
 export default (state = Map(), action) => {
   switch (action.type) {
 	case 'ADD_CHARGE':
-    return addCharge(state, action.charge, action.id);
+    return addCharge(state, action.charge);
   case 'SET_ENTRIES':
     return setState(state, action.entries);
   }
