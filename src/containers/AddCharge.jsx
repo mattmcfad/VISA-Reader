@@ -19,17 +19,13 @@ const AddCharge = class extends React.Component {
 	}
 
 	handleChange (event) {
-		const message = event.target.value;
-		console.log('change: ', message);
-
 		this.setState({
-			description: message
+			description: event.target.value
 		});
 	}
 
 	submitCharge () {
 		const currentState = this.state;
-		console.log(currentState);
 		this.props.addCharge(currentState);
 		this.setState({
 			description: '',
