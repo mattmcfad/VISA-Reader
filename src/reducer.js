@@ -15,10 +15,10 @@ export const addCharge = (state, charge) => {
 
 export default (state = Map(), action) => {
   switch (action.type) {
-		case 'ADD_CHARGE':
-    	return addCharge(state, action.charge);
-  	case 'SET_ENTRIES':
-    	return setState(state, action.entries);
+  case 'ADD_CHARGE':
+    return addCharge(state, action.charge);
+  case 'SET_ENTRIES':
+    return setState(state, action.entries);
   }
   return state;
 }
