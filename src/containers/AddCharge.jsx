@@ -11,41 +11,39 @@ const AddCharge = class extends React.Component {
 		super(props);
 
 		this.state = {
-			"id": 10,
-			"date": "12/31/2015",
-			"description": "",
-			"credit": 181.41
+			id: 10,
+			date: '',
+			description: '',
+			credit: ''
 		};
 	}
 
-	handleChange (event) {
-		this.setState({
-			description: event.target.value
-		});
+	updateValue (state) {
+		this.setState(state);
 	}
 
-	submitCharge () {
-		const currentState = this.state;
-		this.props.addCharge(currentState);
+	submitCharge (event) {
+		event.preventDefault();
+
+		this.props.addCharge(this.state);
 		this.setState({
+			id: this.state.id + 1,
+			date: '',
 			description: '',
-			id: this.state.id + 1
+			credit: ''
 		});
 	}
 
 	render() {
 
-		return <label>
-			<span>Charge description: </span>
-			<input
-				type="text"
-				value={this.state.description}
-				onChange={this.handleChange.bind(this)}
-			/>
-		<button onClick={this.submitCharge.bind(this)}>
+		return <form>
+			<ChargeInput type='description' updateValue={this.updateValue.bind(this)} />
+			<ChargeInput type='date' updateValue={this.updateValue.bind(this)} />
+			<ChargeInput type='credit' updateValue={this.updateValue.bind(this)} />
+			<button onClick={this.submitCharge.bind(this)}>
 				Add Charge
 			</button>
-		</label>
+		</form>
 	}
 };
 
