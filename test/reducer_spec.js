@@ -1,7 +1,7 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setState, addCharge} from '../src/reducer';
+import {setState, addCharge, setCategories} from '../src/reducer';
 
 describe('Reducer Logic', () => {
 
@@ -30,7 +30,7 @@ describe('Reducer Logic', () => {
         }
       ];
 
-      const nextState = setState (state, charges);
+      const nextState = setState(state, charges);
 
       expect(nextState).to.equal(Map({
         credit: List.of(
@@ -118,6 +118,49 @@ describe('Reducer Logic', () => {
         )
       }));
     });
+  });
+
+  describe('setCategories', () => {
+
+    it('adds the mock categories to the state', () => {
+      const state = Map();
+      const categories = [
+      	"Food",
+      	"Coffee",
+      	"Uber",
+      	"Restaurant",
+      	"Bar",
+      	"Alcohol",
+      	"Optometrist",
+      	"Dentist",
+      	"TTC",
+      	"Internet",
+      	"Clothes",
+      	"Shoes",
+      	"Miscellaneous"
+      ];
+
+      const nextState = setCategories(state, categories);
+
+      expect(nextState).to.equal(Map({
+        'categories': List.of(
+          'Food',
+        	'Coffee',
+        	'Uber',
+        	'Restaurant',
+        	'Bar',
+        	'Alcohol',
+        	'Optometrist',
+        	'Dentist',
+        	'TTC',
+        	'Internet',
+        	'Clothes',
+        	'Shoes',
+        	'Miscellaneous'
+        )
+      }));
+    });
+
   });
 
 });

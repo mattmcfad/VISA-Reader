@@ -13,3 +13,10 @@ export const setEntries = (entries) => {
 		entries
 	}
 }
+
+export const setCategories = (categories) => {
+	return {
+		type: 'SET_CATEGORIES',
+		categories
+	}
+}

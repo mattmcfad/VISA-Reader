@@ -10,7 +10,10 @@ export const addCharge = (state, charge) => {
                       .unshift(fromJS(charge));
 
   return state.set('credit', newCharges);
+}
 
+export const setCategories = (state, categories) => {
+  return state.set('categories', List(fromJS(categories)))
 }
 
 export default (state = Map(), action) => {
@@ -19,6 +22,9 @@ export default (state = Map(), action) => {
     return addCharge(state, action.charge);
   case 'SET_ENTRIES':
     return setState(state, action.entries);
+  case 'SET_CATEGORIES':
+    return setCategories(state, action.entries);
   }
+
   return state;
 }
