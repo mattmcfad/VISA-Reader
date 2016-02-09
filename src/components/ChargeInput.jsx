@@ -18,10 +18,9 @@ const ChargeInput = class extends React.Component {
 	}
 
 	handleBlur (event) {
-
-		let update = {};
-		update[this.state.type] = this.state.value;
-		this.props.updateValue(update);
+		this.props.updateValue({
+		  [this.state.type]: this.state.value
+		});
 	}
 
 	render() {
