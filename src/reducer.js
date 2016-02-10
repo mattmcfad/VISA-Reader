@@ -23,7 +23,7 @@ export default (state = Map(), action) => {
   case 'SET_ENTRIES':
     return setState(state, action.entries);
   case 'SET_CATEGORIES':
-    return setCategories(state, action.entries);
+    return setCategories(state, action.categories);
   }
 
   return state;
