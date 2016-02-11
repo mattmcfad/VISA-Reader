@@ -4,7 +4,6 @@
   "description": "visa parser",
   "main": "index.js",
   "scripts": {
-    "compile": "webpack --config webpack.config.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
     "test:watch": "npm run test -- --watch"
   },
