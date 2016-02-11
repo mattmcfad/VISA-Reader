@@ -1,4 +1,4 @@
 node_modules
 
-dist/build/index.js
+dist/*.js
 mock.csv
