@@ -20,3 +20,10 @@ export const setCategories = (categories) => {
 		categories
 	}
 }
+
+export const setDictionary = (dictionary) => {
+	return {
+		type: 'SET_DICTIONARY',
+		dictionary
+	}
+}

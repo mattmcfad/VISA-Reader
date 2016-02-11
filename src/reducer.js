@@ -13,7 +13,11 @@ export const addCharge = (state, charge) => {
 }
 
 export const setCategories = (state, categories) => {
-  return state.set('categories', List(fromJS(categories)))
+  return state.set('categories', List(fromJS(categories)));
+}
+
+export const setDictionary = (state, dictionary) => {
+	return state.set('dictionary', List(fromJS(dictionary)));
 }
 
 export default (state = Map(), action) => {
@@ -24,6 +28,8 @@ export default (state = Map(), action) => {
     return setState(state, action.entries);
   case 'SET_CATEGORIES':
     return setCategories(state, action.categories);
+  case 'SET_DICTIONARY':
+    return setDictionary(state, action.dictionary);
   }
 
   return state;

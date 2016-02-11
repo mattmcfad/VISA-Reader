@@ -1,0 +1,22 @@
+{
+	"AAA Bar": {
+		"category": "Alcohol",
+		"tags": ["Bar", "Dinner"]
+	},
+	"PATRIA": {
+		"category": "Food",
+		"tags": ["Dinner", "Drinks"]
+	},
+	"METRO #62": {
+		"category": "Food",
+		"tags": ["Grocery"]
+	},
+	"Amazon.ca": {
+		"category": "Miscellaneous",
+		"tags": ["Electronics"]
+	},
+	"Uber BV": {
+		"category": "Transportation",
+		"tags": []
+	}
+}
