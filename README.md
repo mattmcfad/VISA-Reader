@@ -1,4 +1,7 @@
-# VISA READER [![Circle CI](https://circleci.com/gh/mattmcfad/VISA-Reader-TWO.svg?style=svg)](https://circleci.com/gh/mattmcfad/VISA-Reader-TWO)
+# VISA Reader
 
+> Analyzing TD Visa bills
 
-## WIP: Learning React + Redux by building an app to analyze my TD Credit Card bills...
+[![Circle CI](https://circleci.com/gh/mattmcfad/VISA-Reader-TWO.svg?style=svg)](https://circleci.com/gh/mattmcfad/VISA-Reader-TWO)
+
+_Work in progress!_
