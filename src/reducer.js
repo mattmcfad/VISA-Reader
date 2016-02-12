@@ -17,7 +17,7 @@ export const setCategories = (state, categories) => {
 }
 
 export const setDictionary = (state, dictionary) => {
-	return state.set('dictionary', List(fromJS(dictionary)));
+	return state.set('dictionary', fromJS(dictionary));
 }
 
 export default (state = Map(), action) => {
@@ -30,7 +30,7 @@ export default (state = Map(), action) => {
     return setCategories(state, action.categories);
   case 'SET_DICTIONARY':
     return setDictionary(state, action.dictionary);
+  default:
+    return state;
   }
-
-  return state;
 }

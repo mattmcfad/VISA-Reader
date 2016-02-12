@@ -1,7 +1,7 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setState, addCharge, setCategories} from '../src/reducer';
+import {setState, addCharge, setCategories, setDictionary} from '../src/reducer';
 
 describe('Reducer Logic', () => {
 
@@ -163,4 +163,58 @@ describe('Reducer Logic', () => {
 
   });
 
+  describe('setDictionary', () => {
+    it('adds the mock dictionary to the state', () => {
+      const state = Map();
+      const dictionary = {
+      	"AAA Bar": {
+      		"category": "Alcohol",
+      		"tags": ["Bar", "Dinner"]
+      	},
+      	"PATRIA": {
+      		"category": "Food",
+      		"tags": ["Dinner", "Drinks"]
+      	},
+      	"METRO #62": {
+      		"category": "Food",
+      		"tags": ["Grocery"]
+      	},
+      	"Amazon.ca": {
+      		"category": "Miscellaneous",
+      		"tags": ["Electronics"]
+      	},
+      	"Uber BV": {
+      		"category": "Transportation",
+      		"tags": []
+      	}
+      };
+
+      const nextState = setDictionary(state, dictionary);
+
+      expect(nextState).to.equal(Map({
+        'dictionary': Map({
+          'AAA Bar' : Map({
+            'category': 'Alcohol',
+            'tags': List.of('Bar', 'Dinner')
+          }),
+          'PATRIA': Map({
+            'category': 'Food',
+            'tags': List.of('Dinner', 'Drinks')
+          }),
+          'METRO #62': Map({
+            'category': 'Food',
+            'tags': List.of('Grocery')
+          }),
+          'Amazon.ca': Map({
+            'category': 'Miscellaneous',
+            'tags': List.of('Electronics')
+          }),
+          'Uber BV': Map({
+            'category': 'Transportation',
+            'tags': List.of()
+          })
+        })
+      }));
+    });
+  });
 });
