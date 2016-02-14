@@ -1,4 +1,9 @@
-let chargeId = 0;
+export const setCredit = (charges) => {
+	return {
+		type: 'SET_CREDIT',
+		charges
+	}
+}
 
 export const addCreditCharge = (charge) => {
 	return {
@@ -7,12 +12,14 @@ export const addCreditCharge = (charge) => {
 	}
 }
 
-export const setCredit = (charges) => {
+export const addCategoryToCharge = (chargeDescription, category) => {
 	return {
-		type: 'SET_CREDIT',
-		charges
+		type: 'ADD_CATEGORY_TO_CHARGE',
+		chargeDescription,
+		category
 	}
 }
+
 
 export const setCategories = (categories) => {
 	return {

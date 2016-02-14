@@ -28,6 +28,7 @@ const Chart = class extends React.Component {
 							date={charge.get('date')}
 							description={charge.get('description')}
 							credit={charge.get('credit')}
+							category={charge.get('category')}
 						/>
 					)}
 				</tbody>

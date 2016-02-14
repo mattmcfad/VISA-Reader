@@ -1,7 +1,8 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setCredit, addCreditCharge, setCategories, setDictionary, addDictionaryEntry}
+import {setCredit, addCreditCharge, addCategoryToCharge,
+  setCategories, setDictionary, addDictionaryEntry}
 from '../src/reducer';
 
 describe('Reducer Logic', () => {
@@ -243,5 +244,89 @@ describe('Reducer Logic', () => {
 
     });
 
+  });
+
+  describe('addCategoryToCharge', () => {
+    it('Assigns a category to a charge', () => {
+      const state = Map({
+        'credit': List.of(Map({
+          'id': 9,
+          'date': '12/21/2015',
+          'description': 'QUANTUM COFFEE',
+          'credit': 12.49
+        }))
+      });
+      const chargeDescription = 'QUANTUM COFFEE';
+      const category = 'COFFEE';
+
+      const nextState = addCategoryToCharge(state, chargeDescription, category);
+
+      expect(nextState).to.equal(Map({
+        'credit': List.of(Map({
+          'id': 9,
+          'date': '12/21/2015',
+          'description': 'QUANTUM COFFEE',
+          'credit': 12.49,
+          'category': 'COFFEE'
+        }))
+      }));
+
+    });
+
+    it('Updates the category for all instances of a charge', () => {
+      const state = Map({
+        'credit': List.of(
+          Map({
+            'id': 9,
+            'date': '12/21/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 12.49
+          }),
+          Map({
+            'id': 8,
+            'date': '12/19/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 4.49
+          }),
+          Map({
+            'id': 7,
+            'date': '12/17/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 9.99
+          })
+        )
+      });
+      const chargeDescription = 'QUANTUM COFFEE';
+      const category = 'COFFEE';
+
+      const nextState = addCategoryToCharge(state, chargeDescription, category);
+
+      expect(nextState).to.equal(Map({
+        'credit': List.of(
+          Map({
+            'id': 9,
+            'date': '12/21/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 12.49,
+            'category': 'COFFEE'
+          }),
+          Map({
+            'id': 8,
+            'date': '12/19/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 4.49,
+            'category': 'COFFEE'
+          }),
+          Map({
+            'id': 7,
+            'date': '12/17/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 9.99,
+            'category': 'COFFEE'
+          })
+        )
+      }));
+
+    });
   });
 });

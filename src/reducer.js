@@ -12,6 +12,15 @@ export const addCreditCharge = (state, charge) => {
   return state.set('credit', newCharges);
 }
 
+export const addCategoryToCharge = (state, chargeDescription, category) => {
+  const charges = state.get('credit', List()).map(charge => {
+    return charge.get('description') === chargeDescription
+      ? charge.set('category', category)
+      : charge;
+  });
+  return setCredit(state, charges);
+}
+
 export const setCategories = (state, categories) => {
   return state.set('categories', List(fromJS(categories)));
 }
@@ -30,10 +39,12 @@ export const addDictionaryEntry = (state, entry) => {
 
 export default (state = Map(), action) => {
   switch (action.type) {
-  case 'ADD_CREDIT_CHARGE':
-    return addCreditCharge(state, action.charge);
   case 'SET_CREDIT':
     return setCredit(state, action.charges);
+  case 'ADD_CREDIT_CHARGE':
+    return addCreditCharge(state, action.charge);
+  case 'ADD_CATEGORY_TO_CHARGE':
+    return addCategoryToCharge(state, action.chargeDescription, action.category);
   case 'SET_CATEGORIES':
     return setCategories(state, action.categories);
   case 'SET_DICTIONARY':
