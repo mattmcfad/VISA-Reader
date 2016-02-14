@@ -4,7 +4,8 @@ export default (props) => {
 	const {
 		date,
 		description,
-		credit
+		credit,
+		category
 	} = props;
 
 	return (
@@ -12,6 +13,7 @@ export default (props) => {
 			<td>{date}</td>
 			<td>{description}</td>
 			<td>{credit}</td>
+			<td>{category}</td>
 		</tr>
 	);
 }

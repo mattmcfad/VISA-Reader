@@ -5,11 +5,9 @@ export const setCredit = (state, charges) => {
 }
 
 export const addCreditCharge = (state, charge) => {
-  const newCharges = state
-                      .get('credit', List())
-                      .unshift(fromJS(charge));
+  const charges = state.get('credit', List()).unshift(fromJS(charge));
 
-  return state.set('credit', newCharges);
+  return state.set('credit', charges);
 }
 
 export const addCategoryToCharge = (state, chargeDescription, category) => {

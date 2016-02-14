@@ -20,6 +20,7 @@ const Chart = class extends React.Component {
 						<th>Date</th>
 						<th>Description</th>
 						<th>Credit</th>
+						<th>Category</th>
 					</tr>
 				</thead>
 				<tbody>

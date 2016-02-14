@@ -284,12 +284,18 @@ describe('Reducer Logic', () => {
           }),
           Map({
             'id': 8,
+            'date': '12/20/2015',
+            'description': 'AAA BAR',
+            'credit': 99.99
+          }),
+          Map({
+            'id': 7,
             'date': '12/19/2015',
             'description': 'QUANTUM COFFEE',
             'credit': 4.49
           }),
           Map({
-            'id': 7,
+            'id': 6,
             'date': '12/17/2015',
             'description': 'QUANTUM COFFEE',
             'credit': 9.99
@@ -312,13 +318,19 @@ describe('Reducer Logic', () => {
           }),
           Map({
             'id': 8,
+            'date': '12/20/2015',
+            'description': 'AAA BAR',
+            'credit': 99.99
+          }),
+          Map({
+            'id': 7,
             'date': '12/19/2015',
             'description': 'QUANTUM COFFEE',
             'credit': 4.49,
             'category': 'COFFEE'
           }),
           Map({
-            'id': 7,
+            'id': 6,
             'date': '12/17/2015',
             'description': 'QUANTUM COFFEE',
             'credit': 9.99,

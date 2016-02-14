@@ -40,6 +40,7 @@ const AddCharge = class extends React.Component {
 			<ChargeInput type='description' updateValue={this.updateValue.bind(this)} />
 			<ChargeInput type='date' updateValue={this.updateValue.bind(this)} />
 			<ChargeInput type='credit' updateValue={this.updateValue.bind(this)} />
+			<ChargeInput type='category' updateValue={this.updateValue.bind(this)} />
 			<button onClick={this.submitCharge.bind(this)}>
 				Add Charge
 			</button>
