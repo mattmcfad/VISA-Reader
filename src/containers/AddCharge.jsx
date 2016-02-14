@@ -25,7 +25,7 @@ const AddCharge = class extends React.Component {
 	submitCharge (event) {
 		event.preventDefault();
 
-		this.props.addCharge(this.state);
+		this.props.addCreditCharge(this.state);
 		this.setState({
 			id: this.state.id + 1,
 			date: '',

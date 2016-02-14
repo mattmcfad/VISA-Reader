@@ -1,11 +1,12 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setState, addCharge, setCategories, setDictionary} from '../src/reducer';
+import {setCredit, addCreditCharge, setCategories, setDictionary, addDictionaryEntry}
+from '../src/reducer';
 
 describe('Reducer Logic', () => {
 
-  describe('setState', () => {
+  describe('setCredit', () => {
 
     it('adds the charges to the credit state', () => {
       const state = Map();
@@ -30,7 +31,7 @@ describe('Reducer Logic', () => {
         }
       ];
 
-      const nextState = setState(state, charges);
+      const nextState = setCredit(state, charges);
 
       expect(nextState).to.equal(Map({
         credit: List.of(
@@ -57,7 +58,7 @@ describe('Reducer Logic', () => {
     });
   });
 
-  describe('addCharge', () => {
+  describe('addCreditCharge', () => {
 
     it('adds new credit card charge', () => {
       const state = Map();
@@ -67,7 +68,7 @@ describe('Reducer Logic', () => {
         "description": "QUANTUM COFFEE",
         "credit": 12.49
       };
-      const nextState = addCharge(state, charge);
+      const nextState = addCreditCharge(state, charge);
       expect(nextState).to.equal(Map({
         credit: List.of(
           Map({
@@ -99,7 +100,7 @@ describe('Reducer Logic', () => {
         "credit": 12.49
       };
 
-      const nextState = addCharge(state, newCharge);
+      const nextState = addCreditCharge(state, newCharge);
 
       expect(nextState).to.equal(Map({
         credit: List.of(
@@ -216,5 +217,31 @@ describe('Reducer Logic', () => {
         })
       }));
     });
+  });
+
+  describe('addDictionaryEntry', () => {
+    it('adds a new entry to dictionary', () => {
+
+      const state = Map();
+      const entry = {
+        chargeDescription: 'AAA Bar',
+        chargeType: {
+          'category': 'Alcohol',
+      		'tags': ['Bar', 'Dinner']
+        }
+      };
+
+      const nextState = addDictionaryEntry(state, entry);
+      expect(nextState).to.equal(Map({
+        'dictionary': Map({
+          'AAA Bar': Map({
+            'category': 'Alcohol',
+            'tags': List.of('Bar', 'Dinner')
+          })
+        })
+      }));
+
+    });
+
   });
 });

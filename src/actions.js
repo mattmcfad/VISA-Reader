@@ -1,16 +1,16 @@
 let chargeId = 0;
 
-export const addCharge = (charge) => {
+export const addCreditCharge = (charge) => {
 	return {
-		type: 'ADD_CHARGE',
+		type: 'ADD_CREDIT_CHARGE',
 		charge
 	}
 }
 
-export const setEntries = (entries) => {
+export const setCredit = (charges) => {
 	return {
-		type: 'SET_ENTRIES',
-		entries
+		type: 'SET_CREDIT',
+		charges
 	}
 }
 
@@ -25,5 +25,12 @@ export const setDictionary = (dictionary) => {
 	return {
 		type: 'SET_DICTIONARY',
 		dictionary
+	}
+}
+
+export const addDictionaryEntry = (entry) => {
+	return {
+		type: 'ADD_DICTIONARY_ENTRY',
+		entry
 	}
 }
