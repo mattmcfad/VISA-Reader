@@ -32,7 +32,7 @@ const Charge = class extends React.Component {
 	render() {
 		return (
 			<tr>
-				<td>{this.props.date} bruh</td>
+				<td>{this.props.date}</td>
 				<td>{this.props.description}</td>
 				<td>{this.props.credit}</td>
 				<td>
