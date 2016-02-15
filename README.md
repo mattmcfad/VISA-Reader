@@ -1,4 +1,4 @@
-# VISA Reader
+# VISA Reader :credit_card::mag:
 
 > Analyzing TD Visa bills
 
