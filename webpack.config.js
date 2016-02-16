@@ -9,10 +9,15 @@ module.exports = {
 	],
 	output: {
 		path: path.join(__dirname, 'dist'),
+		publicPath: '/',
 		filename: 'bundle.js'
 	},
 	module: {
 		loaders: [
+			{
+				test:   /\.css$/,
+				loader: 'style-loader!css-loader!postcss-loader!cssnext-loader',
+			},
 			{
 				test: /\.(js|jsx)$/,
 				loader: 'react-hot!babel',
@@ -20,7 +25,7 @@ module.exports = {
 			}, {
         test: /\.json$/,
         loader: 'json-loader',
-      },
+      }
 		]
 	},
 	resolve: {
