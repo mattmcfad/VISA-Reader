@@ -67,15 +67,21 @@ const FileInput = class extends React.Component {
 	}
 
 	render() {
+		const buttonClassNames = 'btn border bg-blue white col-2';
 		const submitButton = (!this.state.isLoading
 			? <button
-					className='btn border bg-blue white col-2'
+					className={ buttonClassNames }
 					onClick={this.handleClick.bind(this)}
 					type='submit'
 				>
 					Upload
 				</button>
-			: <span>Loading!!!</span>
+			: <button
+					className={ `${buttonClassNames} disabled` }
+					disabled='true'
+				>
+					Loading....
+				</button>
 		);
 
 		return <section className='my2 col-12'>
