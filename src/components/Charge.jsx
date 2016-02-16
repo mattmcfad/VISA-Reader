@@ -18,8 +18,8 @@ const Charge = class extends React.Component {
 		return this.props.categories.map(category =>
 			{
 				return {
-					"label": category,
-					"value": category
+					'label': category,
+					'value': category
 				}
 			}
 		).toJS();
@@ -29,19 +29,33 @@ const Charge = class extends React.Component {
 		this.props.addCategoryToCharge(this.props.description, value);
 	}
 
+
 	render() {
+
+		let className = this.props.category
+		? {
+			'gray' : 'bg-light-gray',
+			'blue' : 'bg-light-blue',
+			'green' : 'bg-light-green'
+			}
+		: "";
+
+
 		return (
-			<tr>
-				<td>{this.props.date}</td>
-				<td>{this.props.description}</td>
-				<td>{this.props.credit}</td>
-				<td>
+			<tr className={`flex border-bottom py1 ${ '' }`}>
+				<td className='col-2'>{this.props.date}</td>
+				<td className='col-5'>{this.props.description}</td>
+				<td className='col-2'>{this.props.credit}</td>
+				<td className='col-3 p0'>
 					<Select
+						clearable={false}
+						placeholder={' --- Select --- '}
+						className={` center ${ className.blue }`}
 						name={this.props.description}
 						value={this.props.category}
 						options={this.getCategories()}
 						onChange={this.handleChange}
-						/>
+					/>
 				</td>
 			</tr>
 		);

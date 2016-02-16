@@ -13,17 +13,17 @@ const Chart = class extends React.Component {
 	}
 
 	render() {
-		return (
-			<table>
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>Description</th>
-						<th>Credit</th>
-						<th>Category</th>
+		return <section className='col-12'>
+			<table className='border'>
+				<thead className='white bg-blue'>
+					<tr className='flex left-align rounded bold'>
+						<th className='col-2 '>Date</th>
+						<th className='col-5'>Description</th>
+						<th className='col-2'>Credit</th>
+						<th className='col-3 center'>Category</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className='overflow-scroll block' style={ styles }>
 					{this.getData().map(charge =>
 						<Charge key={charge.get('id')}
 							date={charge.get('date')}
@@ -34,8 +34,12 @@ const Chart = class extends React.Component {
 					)}
 				</tbody>
 			</table>
-		);
+		</section>
 	}
+}
+
+const styles = {
+	maxHeight: "400px"
 }
 
 function mapStateToProps(state) {

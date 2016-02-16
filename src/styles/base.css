@@ -4,3 +4,45 @@
   box-sizing: border-box;
   font-family: 'Helvetica', 'Arial', sans-serif;
 }
+.wrapper ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  height: 50px;
+  background-color: rgba(0,116,217,1);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+
+.Select .Select-placeholder {
+  color: black;
+}
+
+
+/*  WIP !!!! todo: update designs*/
+
+.bg-light-blue.Select .Select-placeholder {
+  /*// light blue*/
+  background-color: rgba(0,116,217,0.9);
+  color: white;
+  /*color: rgba(0,116,217,1);*/
+}
+
+.bg-light-gray.Select .Select-placeholder {
+  /*light gray*/
+  background-color: rgba(0,0,0,0.025);
+}
+
+.bg-light-green.Select .Select-placeholder {
+  /*green*/
+  background-color: rgba(46,204,64,0.2);
+}
+
+
+.bg-light-gray {
+  /*light gray*/
+  background-color: rgba(0,0,0,0.025);
+}
