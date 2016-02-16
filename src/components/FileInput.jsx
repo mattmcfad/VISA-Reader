@@ -40,6 +40,7 @@ const FileInput = class extends React.Component {
 			header: true,
 			skipEmptyLines: true,
 			beforeFirstChunk: function(chunk) {
+				// todo: have different options for different banks
 				const headers = 'date,description,credit,debit,balance\r\n'
 				return headers + chunk;
 			},
@@ -58,7 +59,10 @@ const FileInput = class extends React.Component {
 
 	addCharges (results) {
 		const data = results.data
-		const startId = this.props.charges.first().get('id') + 1;
+		// todo: move this logic into reducer to programatically assign id
+		const startId = this.props.charges.first()
+			? this.props.charges.first().get('id') + 1
+			: 0;
 
 		data.forEach((charge, index) => {
 			charge.id = startId + index;
@@ -67,34 +71,30 @@ const FileInput = class extends React.Component {
 	}
 
 	render() {
-		const buttonClassNames = 'btn border bg-blue white col-2';
+		const buttonClassNames = 'btn border white col-2';
 		const submitButton = (!this.state.isLoading
 			? <button
-					className={ buttonClassNames }
+					className={ `${buttonClassNames} bg-blue ` }
 					onClick={this.handleClick.bind(this)}
-					type='submit'
-				>
-					Upload
+					type='submit'>
+					Parse it!
 				</button>
 			: <button
-					className={ `${buttonClassNames} disabled` }
-					disabled='true'
-				>
+					className={ `${buttonClassNames} bg-orange disabled` }
+					disabled='true'>
 					Loading....
 				</button>
 		);
 
 		return <section className='my2 col-12'>
-			<div className=''>
-				<form className='flex'>
-					<input
-						className='border py2 pl2 bold col-10'
-						type='file'
-						onChange={this.handleChange.bind(this)}
-						/>
-					{submitButton}
-				</form>
-			</div>
+			<form className='flex'>
+				<input
+					className='border py2 pl2 bold col-10'
+					type='file'
+					onChange={this.handleChange.bind(this)}
+				/>
+				{submitButton}
+			</form>
 		</section>
 	}
 }

@@ -20,7 +20,7 @@ const Chart = class extends React.Component {
 						<th className='col-2 '>Date</th>
 						<th className='col-5'>Description</th>
 						<th className='col-2'>Credit</th>
-						<th className='col-3 center'>Category</th>
+						<th className='col-3 pl0 center'>Category</th>
 					</tr>
 				</thead>
 				<tbody className='overflow-scroll block' style={ styles }>
