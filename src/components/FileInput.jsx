@@ -69,6 +69,7 @@ const FileInput = class extends React.Component {
 	render() {
 		const submitButton = (!this.state.isLoading
 			? <button
+					className='btn border bg-blue white col-2'
 					onClick={this.handleClick.bind(this)}
 					type='submit'
 				>
@@ -77,13 +78,18 @@ const FileInput = class extends React.Component {
 			: <span>Loading!!!</span>
 		);
 
-		return <form>
-			<input
-				type='file'
-				onChange={this.handleChange.bind(this)}
-			/>
-			{submitButton}
-		</form>
+		return <section className='my2 col-12'>
+			<div className=''>
+				<form className='flex'>
+					<input
+						className='border py2 pl2 bold col-10'
+						type='file'
+						onChange={this.handleChange.bind(this)}
+						/>
+					{submitButton}
+				</form>
+			</div>
+		</section>
 	}
 }
 

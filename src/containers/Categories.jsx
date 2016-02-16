@@ -14,10 +14,14 @@ const Categories = class extends React.Component {
 	}
 
 	render() {
-		return <ul>
-			<h3>Categories</h3>
+		return <ul className='list-reset'>
+			<h3 className='h1 m0 p2 bg-blue white'>Categories</h3>
 			{this.getCategories().map(category =>
-				<li key={category}>{ category }</li>
+				<li key={ category } className='p1 pl2 border'>
+					<span className='h3'>
+						{ category }
+					</span>
+				</li>
 			)}
 		</ul>
 	}

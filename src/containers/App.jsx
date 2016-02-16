@@ -6,12 +6,14 @@ import FileInput from '../components/FileInput';
 
 const App = (props) => {
 	return (
-		<div className='main-wrapper'>
-			<h1>This app actually works. Wow.</h1>
-			<Chart />
-			<FileInput />
-			<AddCharge />
-			<Categories />
+		<div className='col-12 clearfix'>
+			<div className='wrapper col-8 mx-auto'>
+				<h1 className='blue pl2'>TD VISA READER !!!!!!!!</h1>
+				<Chart />
+				<FileInput />
+				{/*<AddCharge />*/}
+				<Categories />
+			</div>
 		</div>
 	);
 }
