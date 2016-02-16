@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 import * as actionCreators from '../actions';
 
-import { fromJS } from 'immutable';
-
 // import Papa from 'todo...'
 
 const FileInput = class extends React.Component {
@@ -14,9 +12,9 @@ const FileInput = class extends React.Component {
 		super(props);
 
 		this.state = {
-			file: ''
+			file: '',
+			isLoading: false
 		};
-
 		this.parseCSV = this.parseCSV.bind(this);
 	}
 
@@ -27,7 +25,13 @@ const FileInput = class extends React.Component {
 	}
 
 	handleClick (event) {
-		this.parseCSV();
+		event.preventDefault();
+
+		if (this.state.file) {
+			this.setState({
+				isLoading: true
+			}, this.parseCSV());
+		}
 	}
 
 	parseCSV () {
@@ -36,33 +40,57 @@ const FileInput = class extends React.Component {
 			header: true,
 			skipEmptyLines: true,
 			beforeFirstChunk: function(chunk) {
-				const headers = "date,description,credit,debit,balance\r\n"
+				const headers = 'date,description,credit,debit,balance\r\n'
 				return headers + chunk;
 			},
 			error: function(error, file) {
-				console.error("error", error, file);
+				console.error('error', error, file);
 			},
 			complete: function(results, file) {
-				//console.log("Parsing complete:", results);
-				self.massageData(results);
+				self.setState({
+					file: '',
+					isLoading: false
+				});
+				self.addCharges(results);
 			}
 		});
 	}
 
-	massageData (results) {
-		const data = fromJS(results.data);
-		data.map(x => console.log(x.get('description'), x.get('credit')));
+	addCharges (results) {
+		const data = results.data
+		const startId = this.props.charges.first().get('id') + 1;
+
+		data.forEach((charge, index) => {
+			charge.id = startId + index;
+			this.props.addCreditCharge(charge);
+		});
 	}
 
 	render() {
-		return <div>
+		const submitButton = (!this.state.isLoading
+			? <button
+					onClick={this.handleClick.bind(this)}
+					type='submit'
+				>
+					Upload
+				</button>
+			: <span>Loading!!!</span>
+		);
+
+		return <form>
 			<input
 				type='file'
 				onChange={this.handleChange.bind(this)}
 			/>
-			<button onClick={this.handleClick.bind(this)}>Upload</button>
-		</div>
+			{submitButton}
+		</form>
 	}
 }
 
-export default connect(null, actionCreators)(FileInput);
+function mapStateToProps(state) {
+  return {
+    charges: state.get('credit')
+  };
+}
+
+export default connect(mapStateToProps, actionCreators)(FileInput);
