@@ -1,9 +1,14 @@
-import {List, Map} from 'immutable';
-import {expect} from 'chai';
+import { List, Map } from 'immutable';
+import { expect } from 'chai';
 
-import {setCredit, addCreditCharge, addCategoryToCharge,
-  setCategories, setDictionary, addDictionaryEntry}
-from '../src/reducer';
+import {
+  setCredit,
+  addCreditCharge,
+  addCategoryToCharge,
+  setCategories,
+  setDictionary,
+  addDictionaryEntry
+} from '../src/reducer';
 
 describe('Reducer Logic', () => {
 
