@@ -5,15 +5,18 @@ export const setCredit = (state, charges) => {
 }
 
 export const addCreditCharge = (state, charge) => {
-  const charges = state.get('credit', List()).unshift(fromJS(charge));
-  if (state.get('dictionary').has(charge.description)) {
-    return addCategoryToCharge(
-      setCredit(state, charges),
-      charge.description,
-      state.getIn(['dictionary', charge.description, 'category'])
-    );
-  }
-  return setCredit(state, charges);
+  const oldCharges = state.get('credit', List());
+  const id = oldCharges.size ? oldCharges.last().get('id') + 1 : 1;
+  charge.id = id;
+  const charges = oldCharges.push(fromJS(charge));
+
+	return state.get('dictionary').has(charge.description)
+		? addCategoryToCharge(
+	    	setCredit(state, charges),
+	      charge.description,
+	      state.getIn(['dictionary', charge.description, 'category'])
+	    )
+		: setCredit(state, charges);
 }
 
 export const addCategoryToCharge = (state, chargeDescription, category) => {

@@ -16,6 +16,10 @@
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
+.disabled {
+   cursor: progress;
+}
+
 
 .Select .Select-placeholder {
   color: black;
@@ -25,7 +29,7 @@
 /*  WIP !!!! todo: update designs*/
 
 .bg-light-blue.Select .Select-placeholder {
-  /*// light blue*/
+  /*light blue*/
   background-color: rgba(0,116,217,0.9);
   color: white;
   /*color: rgba(0,116,217,1);*/
@@ -37,7 +41,7 @@
 }
 
 .bg-light-green.Select .Select-placeholder {
-  /*green*/
+  /*light green*/
   background-color: rgba(46,204,64,0.2);
 }
 
