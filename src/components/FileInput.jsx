@@ -52,20 +52,13 @@ const FileInput = class extends React.Component {
 					file: '',
 					isLoading: false
 				});
-				self.addCharges(results);
+				self.addCharges(results.data);
 			}
 		});
 	}
 
 	addCharges (results) {
-		const data = results.data
-		// todo: move this logic into reducer to programatically assign id
-		const startId = this.props.charges.first()
-			? this.props.charges.first().get('id') + 1
-			: 0;
-
-		data.forEach((charge, index) => {
-			charge.id = startId + index;
+		results.forEach((charge, index) => {
 			this.props.addCreditCharge(charge);
 		});
 	}

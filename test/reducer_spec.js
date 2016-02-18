@@ -18,19 +18,19 @@ describe('Reducer Logic', () => {
       const state = Map();
       const charges = [
         {
-          "id": 8,
+          "id": 1,
           "date": "12/19/2015",
           "description": "AAA Bar",
           "credit": 99.10
         },
         {
-          "id": 7,
+          "id": 2,
           "date": "12/17/2015",
           "description": "PATRIA",
           "credit": 230.47
         },
         {
-          "id": 6,
+          "id": 3,
           "date": "12/14/2015",
           "description": "METRO #62",
           "credit": 20.94
@@ -42,19 +42,19 @@ describe('Reducer Logic', () => {
       expect(nextState).to.equal(Map({
         credit: List.of(
           Map({
-            "id": 8,
+            "id": 1,
             "date": "12/19/2015",
             "description": "AAA Bar",
             "credit": 99.10
           }),
           Map({
-            "id": 7,
+            "id": 2,
             "date": "12/17/2015",
             "description": "PATRIA",
             "credit": 230.47
           }),
           Map({
-            "id": 6,
+            "id": 3,
             "date": "12/14/2015",
             "description": "METRO #62",
             "credit": 20.94
@@ -71,7 +71,6 @@ describe('Reducer Logic', () => {
         'dictionary': Map()
       });
       const charge = {
-        "id": 9,
         "date": "12/21/2015",
         "description": "QUANTUM COFFEE",
         "credit": 12.49
@@ -81,7 +80,7 @@ describe('Reducer Logic', () => {
         'dictionary': Map(),
         'credit': List.of(
           Map({
-            "id": 9,
+            "id": 1,
             "date": "12/21/2015",
             "description": "QUANTUM COFFEE",
             "credit": 12.49
@@ -90,21 +89,20 @@ describe('Reducer Logic', () => {
       }));
     });
 
-    it('append charge to front of list', () => {
+    it('append charge to end of list, incrementing id', () => {
       const state = Map({
         'dictionary': Map(),
         'credit': List.of(
           Map({
-            "id": 8,
-            "date": "12/19/2015",
-            "description": "AAA Bar",
-            "credit": 99.10
+            'id': 1,
+            'date': '12/19/2015',
+            'description': 'AAA Bar',
+            'credit': 99.10
           })
         )
       });
 
       const newCharge = {
-        "id": 9,
         "date": "12/21/2015",
         "description": "QUANTUM COFFEE",
         "credit": 12.49
@@ -116,16 +114,16 @@ describe('Reducer Logic', () => {
         'dictionary': Map(),
         'credit': List.of(
           Map({
-            "id": 9,
-            "date": "12/21/2015",
-            "description": "QUANTUM COFFEE",
-            "credit": 12.49
+            'id': 1,
+            'date': '12/19/2015',
+            'description': 'AAA Bar',
+            'credit': 99.10
           }),
           Map({
-              "id": 8,
-              "date": "12/19/2015",
-              "description": "AAA Bar",
-              "credit": 99.10
+            'id': 2,
+            'date': '12/21/2015',
+            'description': 'QUANTUM COFFEE',
+            'credit': 12.49
           })
         )
       }));
@@ -140,7 +138,7 @@ describe('Reducer Logic', () => {
         }),
         'credit': List.of(
           Map({
-            'id': 8,
+            'id': 1,
             'date': '12/19/2015',
             'description': 'AAA BAR',
             'credit': 99.10
@@ -148,7 +146,6 @@ describe('Reducer Logic', () => {
         )
       });
       const newCharge = {
-        'id': 9,
         'date': '12/21/2015',
         'description': 'AAA BAR',
         'credit': 100.00
@@ -164,23 +161,25 @@ describe('Reducer Logic', () => {
         }),
         'credit': List.of(
           Map({
-            'id': 9,
-            'date': '12/21/2015',
-            'description': 'AAA BAR',
-            'credit': 100.00,
-            'category': 'Alcohol'
-          }),
-          Map({
-            'id': 8,
+            'id': 1,
             'date': '12/19/2015',
             'description': 'AAA BAR',
             'credit': 99.10,
+            'category': 'Alcohol'
+          }),
+          Map({
+            'id': 2,
+            'date': '12/21/2015',
+            'description': 'AAA BAR',
+            'credit': 100.00,
             'category': 'Alcohol'
           })
         )
       }));
 
     });
+
+    // todo: add multiple charges...
   });
 
   describe('setCategories', () => {
