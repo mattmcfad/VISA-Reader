@@ -1,0 +1,7 @@
+dist/**
+node_modules
+
+// todo include these:
+
+webpack.config.js
+test/**

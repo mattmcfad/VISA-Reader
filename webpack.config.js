@@ -20,7 +20,7 @@ module.exports = {
 			},
 			{
 				test: /\.(js|jsx)$/,
-				loader: 'react-hot!babel',
+				loader: 'react-hot!babel!eslint-loader',
         exclude: /node_modules/
 			}, {
         test: /\.json$/,
