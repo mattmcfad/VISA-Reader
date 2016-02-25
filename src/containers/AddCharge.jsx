@@ -7,45 +7,45 @@ import * as actionCreators from '../actions';
 
 const AddCharge = class extends React.Component {
 
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			id: 10,
-			date: '',
-			description: '',
-			credit: ''
-		};
-	}
+    this.state = {
+      id: 10,
+      date: '',
+      description: '',
+      credit: ''
+    };
+  }
 
-	updateValue (state) {
-		this.setState(state);
-	}
+  updateValue (state) {
+    this.setState(state);
+  }
 
-	submitCharge (event) {
-		event.preventDefault();
+  submitCharge (event) {
+    event.preventDefault();
 
-		this.props.addCreditCharge(this.state);
-		this.setState({
-			id: this.state.id + 1,
-			date: '',
-			description: '',
-			credit: ''
-		});
-	}
+    this.props.addCreditCharge(this.state);
+    this.setState({
+      id: this.state.id + 1,
+      date: '',
+      description: '',
+      credit: ''
+    });
+  }
 
-	render() {
+  render() {
 
-		return <form>
-			<ChargeInput type='description' updateValue={this.updateValue.bind(this)} />
-			<ChargeInput type='date' updateValue={this.updateValue.bind(this)} />
-			<ChargeInput type='credit' updateValue={this.updateValue.bind(this)} />
-			<ChargeInput type='category' updateValue={this.updateValue.bind(this)} />
-			<button onClick={this.submitCharge.bind(this)}>
-				Add Charge
-			</button>
-		</form>
-	}
+    return <form>
+      <ChargeInput type='description' updateValue={this.updateValue.bind(this)} />
+      <ChargeInput type='date' updateValue={this.updateValue.bind(this)} />
+      <ChargeInput type='credit' updateValue={this.updateValue.bind(this)} />
+      <ChargeInput type='category' updateValue={this.updateValue.bind(this)} />
+      <button onClick={this.submitCharge.bind(this)}>
+        Add Charge
+      </button>
+    </form>
+  }
 };
 
 function mapStateToProps(state) {

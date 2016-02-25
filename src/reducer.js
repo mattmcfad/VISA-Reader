@@ -1,8 +1,8 @@
-import {List, Map, fromJS} from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 
 export const setCredit = (state, charges) => {
-	return state.set('credit', List(fromJS(charges)));
-}
+  return state.set('credit', List(fromJS(charges)));
+};
 
 export const addCreditCharge = (state, charge) => {
   const oldCharges = state.get('credit', List());
@@ -10,14 +10,14 @@ export const addCreditCharge = (state, charge) => {
   charge.id = id;
   const charges = oldCharges.push(fromJS(charge));
 
-	return state.get('dictionary').has(charge.description)
-		? addCategoryToCharge(
-	    	setCredit(state, charges),
-	      charge.description,
-	      state.getIn(['dictionary', charge.description, 'category'])
-	    )
-		: setCredit(state, charges);
-}
+  return state.get('dictionary').has(charge.description)
+    ? addCategoryToCharge(
+        setCredit(state, charges),
+        charge.description,
+        state.getIn(['dictionary', charge.description, 'category'])
+    )
+    : setCredit(state, charges);
+};
 
 export const addCategoryToCharge = (state, chargeDescription, category) => {
   const charges = state.get('credit', List()).map(charge => {
@@ -26,15 +26,15 @@ export const addCategoryToCharge = (state, chargeDescription, category) => {
       : charge;
   });
   return setCredit(state, charges);
-}
+};
 
 export const setCategories = (state, categories) => {
   return state.set('categories', List(fromJS(categories)));
-}
+};
 
 export const setDictionary = (state, dictionary) => {
-	return state.set('dictionary', fromJS(dictionary));
-}
+  return state.set('dictionary', fromJS(dictionary));
+};
 
 export const addDictionaryEntry = (state, entry) => {
   const dictionary = state.get('dictionary', Map());
@@ -42,7 +42,7 @@ export const addDictionaryEntry = (state, entry) => {
   return setDictionary(state,
     dictionary.set(entry.chargeDescription, fromJS(entry.chargeType))
   );
-}
+};
 
 export default (state = Map(), action) => {
   switch (action.type) {
@@ -61,4 +61,4 @@ export default (state = Map(), action) => {
   default:
     return state;
   }
-}
+};
