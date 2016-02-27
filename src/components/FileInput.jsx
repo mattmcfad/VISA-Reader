@@ -39,15 +39,15 @@ const FileInput = class extends React.Component {
     Papa.parse(this.state.file, {
       header: true,
       skipEmptyLines: true,
-      beforeFirstChunk: function(chunk) {
+      beforeFirstChunk: (chunk) => {
         // todo: have different options for different banks
         const headers = 'date,description,credit,debit,balance\r\n';
         return headers + chunk;
       },
-      error: function(error, file) {
+      error: (error, file) => {
         console.error('error', error, file);
       },
-      complete: function(results) {
+      complete: (results) => {
         self.setState({
           file: '',
           isLoading: false,
