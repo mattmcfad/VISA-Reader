@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import * as ImmutablePropTypes from 'react-immutable-proptypes';
 import Charge from '../components/Charge';
 
 const Chart = class extends React.Component {
@@ -40,6 +40,10 @@ const Chart = class extends React.Component {
 
 const styles = {
   maxHeight: '400px',
+};
+
+Chart.propTypes = {
+  charges: ImmutablePropTypes.list,
 };
 
 function mapStateToProps(state) {

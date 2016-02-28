@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import * as ImmutablePropTypes from 'react-immutable-proptypes';
 
 // import Category from '../components/Category';
 
@@ -29,6 +30,9 @@ const Categories = class extends React.Component {
   }
 };
 
+Categories.propTypes = {
+  categories: ImmutablePropTypes.list,
+};
 
 function mapStateToProps(state) {
   return {

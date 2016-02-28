@@ -45,7 +45,7 @@ const FileInput = class extends React.Component {
         return headers + chunk;
       },
       error: (error, file) => {
-        console.error('error', error, file);
+        console.error('Papaparse error:', error, file);
       },
       complete: (results) => {
         self.setState({
@@ -92,6 +92,10 @@ const FileInput = class extends React.Component {
     </section>
     );
   }
+};
+
+FileInput.propTypes = {
+  addCreditCharge: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {
