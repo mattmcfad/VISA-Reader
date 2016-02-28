@@ -8,7 +8,7 @@ import {
   setCategories,
   setDictionary,
   addDictionaryEntry
-} from '../src/reducer';
+} from '../src/reducers';
 
 describe('Reducer Logic', () => {
 
