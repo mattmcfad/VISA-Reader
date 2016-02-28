@@ -58,6 +58,16 @@ const Charge = class extends React.Component {
   }
 };
 
+Charge.propTypes = {
+  categories: React.PropTypes.array,
+  'categories.map': React.PropTypes.func,
+  addCategoryToCharge: React.PropTypes.func,
+  description: React.PropTypes.string,
+  category: React.PropTypes.string,
+  date: React.PropTypes.string,
+  credit: React.PropTypes.number,
+};
+
 function mapStateToProps(state) {
   return {
     categories: state.get('categories'),
