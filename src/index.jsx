@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
 import makeStore from './store';
-import { setCredit, setCategories, setDictionary } from './actions.js';
+import { setCredit, setCategories, setDictionary } from './actions';
 
 // import mockCharges from './mock/charges.json';
 import mockCategories from './mock/categories.json';

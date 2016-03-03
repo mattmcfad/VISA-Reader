@@ -54,6 +54,7 @@
     "react-redux": "^4.2.1",
     "react-select": "^0.9.1",
     "redux": "^3.2.1",
+    "redux-logger": "^2.6.0",
     "style-loader": "^0.13.0"
   }
 }
