@@ -4,10 +4,13 @@ export const setCredit = (state, charges) => {
   return state.set('credit', List(fromJS(charges)));
 };
 
+export const addBatchCreditCharge = (state, charges) => {
+  const newCredit = state.get('credit', List()).concat(fromJS(charges));
+  return setCredit(state, newCredit);
+};
+
 export const addCreditCharge = (state, charge) => {
   const oldCharges = state.get('credit', List());
-  const id = oldCharges.size ? oldCharges.last().get('id') + 1 : 1;
-  charge.id = id;
   const charges = oldCharges.push(fromJS(charge));
 
   return state.get('dictionary').has(charge.description)
@@ -48,6 +51,8 @@ export default (state = Map(), action) => {
   switch (action.type) {
   case 'SET_CREDIT':
     return setCredit(state, action.charges);
+  case 'ADD_BATCH_CREDIT_CHARGE':
+    return addBatchCreditCharge(state, action.charges);
   case 'ADD_CREDIT_CHARGE':
     return addCreditCharge(state, action.charge);
   case 'ADD_CATEGORY_TO_CHARGE':

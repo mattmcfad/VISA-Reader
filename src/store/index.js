@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 
+import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Iterable } from 'immutable';
 
@@ -16,6 +17,6 @@ const logger = createLogger({
 export default function makeStore() {
   return createStore(
     reducer,
-    applyMiddleware(logger)
+    applyMiddleware(thunk, logger)
   );
 }

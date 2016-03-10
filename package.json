@@ -23,10 +23,6 @@
   },
   "homepage": "https://github.com/mattmcfad/VISA-Reader-TWO#readme",
   "devDependencies": {
-    "babel-core": "^6.2.1",
-    "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
     "chai-immutable": "^1.5.3",
     "json-loader": "^0.5.4",
@@ -36,7 +32,11 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "babel-core": "^6.2.1",
     "babel-eslint": "^5.0.0",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
     "basscss": "^7.0.4",
     "basscss-background-colors": "^2.0.0",
     "basscss-colors": "^2.1.0",
@@ -55,6 +55,7 @@
     "react-select": "^0.9.1",
     "redux": "^3.2.1",
     "redux-logger": "^2.6.0",
+    "redux-thunk": "^2.0.1",
     "style-loader": "^0.13.0"
   }
 }

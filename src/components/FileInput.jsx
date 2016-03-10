@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import { connect } from 'react-redux';
 
 import * as actionCreators from '../actions';
-
-// import Papa from 'todo...'
 
 const FileInput = class extends React.Component {
 
@@ -57,10 +55,8 @@ const FileInput = class extends React.Component {
     });
   }
 
-  addCharges(results) {
-    results.forEach((charge) => {
-      this.props.addCreditCharge(charge);
-    });
+  addCharges(charges) {
+    this.props.batchAdd(charges);
   }
 
   render() {
@@ -95,7 +91,7 @@ const FileInput = class extends React.Component {
 };
 
 FileInput.propTypes = {
-  addCreditCharge: React.PropTypes.func,
+  batchAdd: PropTypes.func,
 };
 
 function mapStateToProps(state) {

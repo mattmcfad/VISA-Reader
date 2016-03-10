@@ -18,5 +18,8 @@
 	"Uber BV": {
 		"category": "Transportation",
 		"tags": []
-	}
+	},
+  "Uber BV                  help.uber.": {
+    "category": "Transportation"
+  }
 }
