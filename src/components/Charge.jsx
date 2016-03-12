@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import { connect } from 'react-redux';
-// import { toJS } from 'immutable';
 
 import Select from 'react-select';
 import * as actionCreators from '../actions';
@@ -38,7 +37,7 @@ const Charge = class extends React.Component {
 
 
     return (
-      <tr className={`flex border-bottom py1 ${ '' }`}>
+      <tr className={`flex border-bottom py1`}>
         <td className="col-2">{this.props.date}</td>
         <td className="col-5">{this.props.description}</td>
         <td className="col-2">{this.props.credit}</td>
@@ -59,18 +58,18 @@ const Charge = class extends React.Component {
 };
 
 Charge.propTypes = {
-  categories: React.PropTypes.array,
-  'categories.map': React.PropTypes.func,
-  addCategoryToCharge: React.PropTypes.func,
-  description: React.PropTypes.string,
-  category: React.PropTypes.string,
-  date: React.PropTypes.string,
-  credit: React.PropTypes.number,
+  categories: PropTypes.object,
+  'categories.map': PropTypes.func,
+  addCategoryToCharge: PropTypes.func,
+  description: PropTypes.string,
+  category: PropTypes.string,
+  date: PropTypes.string,
+  credit: PropTypes.string,
 };
 
 function mapStateToProps(state) {
   return {
-    categories: state.get('categories'),
+    categories: state.categories.get('types'),
   };
 }
 

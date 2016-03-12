@@ -50,7 +50,7 @@ const AddCharge = class extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    charges: state.get('credit')
+    charges: state.credit
   };
 }
 

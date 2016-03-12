@@ -64,123 +64,123 @@ describe('Reducer Logic', () => {
     });
   });
 
-  describe('addCreditCharge', () => {
+  // describe('addCreditCharge', () => {
 
-    it('adds new credit card charge', () => {
-      const state = Map({
-        'dictionary': Map()
-      });
-      const charge = {
-        "date": "12/21/2015",
-        "description": "QUANTUM COFFEE",
-        "credit": 12.49
-      };
-      const nextState = addCreditCharge(state, charge);
-      expect(nextState).to.equal(Map({
-        'dictionary': Map(),
-        'credit': List.of(
-          Map({
-            "id": 1,
-            "date": "12/21/2015",
-            "description": "QUANTUM COFFEE",
-            "credit": 12.49
-          })
-        )
-      }));
-    });
+  //   it('adds new credit card charge', () => {
+  //     const state = Map({
+  //       'dictionary': Map()
+  //     });
+  //     const charge = {
+  //       "date": "12/21/2015",
+  //       "description": "QUANTUM COFFEE",
+  //       "credit": 12.49
+  //     };
+  //     const nextState = addCreditCharge(state, charge);
+  //     expect(nextState).to.equal(Map({
+  //       'dictionary': Map(),
+  //       'credit': List.of(
+  //         Map({
+  //           "id": 1,
+  //           "date": "12/21/2015",
+  //           "description": "QUANTUM COFFEE",
+  //           "credit": 12.49
+  //         })
+  //       )
+  //     }));
+  //   });
 
-    it('append charge to end of list, incrementing id', () => {
-      const state = Map({
-        'dictionary': Map(),
-        'credit': List.of(
-          Map({
-            'id': 1,
-            'date': '12/19/2015',
-            'description': 'AAA Bar',
-            'credit': 99.10
-          })
-        )
-      });
+  //   it('append charge to end of list, incrementing id', () => {
+  //     const state = Map({
+  //       'dictionary': Map(),
+  //       'credit': List.of(
+  //         Map({
+  //           'id': 1,
+  //           'date': '12/19/2015',
+  //           'description': 'AAA Bar',
+  //           'credit': 99.10
+  //         })
+  //       )
+  //     });
 
-      const newCharge = {
-        "date": "12/21/2015",
-        "description": "QUANTUM COFFEE",
-        "credit": 12.49
-      };
+  //     const newCharge = {
+  //       "date": "12/21/2015",
+  //       "description": "QUANTUM COFFEE",
+  //       "credit": 12.49
+  //     };
 
-      const nextState = addCreditCharge(state, newCharge);
+  //     const nextState = addCreditCharge(state, newCharge);
 
-      expect(nextState).to.equal(Map({
-        'dictionary': Map(),
-        'credit': List.of(
-          Map({
-            'id': 1,
-            'date': '12/19/2015',
-            'description': 'AAA Bar',
-            'credit': 99.10
-          }),
-          Map({
-            'id': 2,
-            'date': '12/21/2015',
-            'description': 'QUANTUM COFFEE',
-            'credit': 12.49
-          })
-        )
-      }));
-    });
+  //     expect(nextState).to.equal(Map({
+  //       'dictionary': Map(),
+  //       'credit': List.of(
+  //         Map({
+  //           'id': 1,
+  //           'date': '12/19/2015',
+  //           'description': 'AAA Bar',
+  //           'credit': 99.10
+  //         }),
+  //         Map({
+  //           'id': 2,
+  //           'date': '12/21/2015',
+  //           'description': 'QUANTUM COFFEE',
+  //           'credit': 12.49
+  //         })
+  //       )
+  //     }));
+  //   });
 
-    it('Checks dictionary when adding a charge and assigns it', () =>{
-      const state = Map({
-        'dictionary': Map({
-          'AAA BAR': Map({
-            'category': 'Alcohol'
-          })
-        }),
-        'credit': List.of(
-          Map({
-            'id': 1,
-            'date': '12/19/2015',
-            'description': 'AAA BAR',
-            'credit': 99.10
-          })
-        )
-      });
-      const newCharge = {
-        'date': '12/21/2015',
-        'description': 'AAA BAR',
-        'credit': 100.00
-      };
+  //   it('Checks dictionary when adding a charge and assigns it', () =>{
+  //     const state = Map({
+  //       'dictionary': Map({
+  //         'AAA BAR': Map({
+  //           'category': 'Alcohol'
+  //         })
+  //       }),
+  //       'credit': List.of(
+  //         Map({
+  //           'id': 1,
+  //           'date': '12/19/2015',
+  //           'description': 'AAA BAR',
+  //           'credit': 99.10
+  //         })
+  //       )
+  //     });
+  //     const newCharge = {
+  //       'date': '12/21/2015',
+  //       'description': 'AAA BAR',
+  //       'credit': 100.00
+  //     };
 
-      const nextState = addCreditCharge(state, newCharge);
+  //     const nextState = addCreditCharge(state, newCharge);
 
-      expect(nextState).to.equal(Map({
-        'dictionary': Map({
-          'AAA BAR': Map({
-            'category': 'Alcohol'
-          })
-        }),
-        'credit': List.of(
-          Map({
-            'id': 1,
-            'date': '12/19/2015',
-            'description': 'AAA BAR',
-            'credit': 99.10,
-            'category': 'Alcohol'
-          }),
-          Map({
-            'id': 2,
-            'date': '12/21/2015',
-            'description': 'AAA BAR',
-            'credit': 100.00,
-            'category': 'Alcohol'
-          })
-        )
-      }));
+  //     expect(nextState).to.equal(Map({
+  //       'dictionary': Map({
+  //         'AAA BAR': Map({
+  //           'category': 'Alcohol'
+  //         })
+  //       }),
+  //       'credit': List.of(
+  //         Map({
+  //           'id': 1,
+  //           'date': '12/19/2015',
+  //           'description': 'AAA BAR',
+  //           'credit': 99.10,
+  //           'category': 'Alcohol'
+  //         }),
+  //         Map({
+  //           'id': 2,
+  //           'date': '12/21/2015',
+  //           'description': 'AAA BAR',
+  //           'credit': 100.00,
+  //           'category': 'Alcohol'
+  //         })
+  //       )
+  //     }));
 
-    });
+  //   });
 
-    // todo: add multiple charges...
-  });
+  //   // todo: add multiple charges...
+  // });
 
   describe('setCategories', () => {
 

@@ -10,9 +10,8 @@ import { setCredit, setCategories, setDictionary } from './actions';
 import mockCategories from './mock/categories.json';
 import mockDictionary from './mock/dictionary.json';
 
-
 const store = makeStore();
-store.dispatch(setCredit({}));
+
 // store.dispatch(setCredit(mockCharges));
 store.dispatch(setCategories(mockCategories));
 store.dispatch(setDictionary(mockDictionary));

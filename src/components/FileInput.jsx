@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import { connect } from 'react-redux';
 
 import * as actionCreators from '../actions';
-
-// import Papa from 'todo...'
 
 const FileInput = class extends React.Component {
 
@@ -13,9 +11,7 @@ const FileInput = class extends React.Component {
 
     this.state = {
       file: '',
-      isLoading: false,
     };
-    this.parseCSV = this.parseCSV.bind(this);
   }
 
   handleChange(event) {
@@ -26,46 +22,14 @@ const FileInput = class extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-
     if (this.state.file) {
-      this.setState({
-        isLoading: true,
-      }, this.parseCSV());
+      this.props.parseCSV(this.state.file);
     }
-  }
-
-  parseCSV() {
-    const self = this;
-    Papa.parse(this.state.file, {
-      header: true,
-      skipEmptyLines: true,
-      beforeFirstChunk: (chunk) => {
-        // todo: have different options for different banks
-        const headers = 'date,description,credit,debit,balance\r\n';
-        return headers + chunk;
-      },
-      error: (error, file) => {
-        console.error('Papaparse error:', error, file);
-      },
-      complete: (results) => {
-        self.setState({
-          file: '',
-          isLoading: false,
-        });
-        self.addCharges(results.data);
-      },
-    });
-  }
-
-  addCharges(results) {
-    results.forEach((charge) => {
-      this.props.addCreditCharge(charge);
-    });
   }
 
   render() {
     const buttonClassNames = 'btn border white col-2';
-    const submitButton = (!this.state.isLoading
+    const submitButton = (!this.props.isLoading
       ? <button
           className={ `${buttonClassNames} bg-blue ` }
           onClick={this.handleClick.bind(this)}
@@ -95,12 +59,13 @@ const FileInput = class extends React.Component {
 };
 
 FileInput.propTypes = {
-  addCreditCharge: React.PropTypes.func,
+  parseCSV: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
-    charges: state.get('credit'),
+    isLoading: state.ui.get('loading'),
   };
 }
 

@@ -48,7 +48,7 @@ Chart.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    charges: state.get('credit'),
+    charges: state.credit.get('charges'),
   };
 }
 
