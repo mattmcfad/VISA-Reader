@@ -1,4 +1,5 @@
-import { List } from 'immutable';
+
+import Papaparse from 'papaparse';
 
 export const setCredit = (charges) => {
   return {
@@ -50,16 +51,56 @@ export const addDictionaryEntry = (entry) => {
   };
 };
 
-export function batchAdd(charges) {
+export function startLoading() {
+  return {
+    type: 'START_LOADING',
+    payload: true,
+  };
+}
+
+export function doneLoading() {
+  return {
+    type: 'DONE_LOADING',
+    payload: false,
+  };
+}
+
+export function parseCSV(csvFile) {
   return (dispatch, state) => {
-    const oldCharges = state().get('credit', List());
+    dispatch(startLoading());
+
+    Papaparse.parse(csvFile, {
+      header: true,
+      skipEmptyLines: true,
+      beforeFirstChunk: (chunk) => {
+        // todo: have different options for different banks
+        const headers = 'date,description,credit,debit,balance\r\n';
+        return headers + chunk;
+      },
+      error: (error, file) => {
+        console.error('Papaparse error:', error, file);
+      },
+      complete: (results) => {
+        dispatch(batchAdd(results.data));
+      },
+    });
+    return state;
+  };
+}
+
+export function batchAdd(charges) {
+  return (dispatch, getState) => {
+    const state = getState();
+    const oldCharges = state.credit.get('charges');
+    const dict = state.dictionary.get('entries');
+
     let id = oldCharges.size ? oldCharges.last().get('id') + 1 : 1;
 
-    const dict = state().get('dictionary');
-    charges.map( (charge) => {
+    charges.forEach( (charge) => {
       charge.id = id++;
       charge.category = dict.getIn([charge.description, 'category'], '');
     });
     dispatch(addBatchCreditCharge(charges));
+    dispatch(doneLoading());
   };
 }

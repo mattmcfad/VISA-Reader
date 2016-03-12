@@ -69,7 +69,7 @@ Charge.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    categories: state.get('categories'),
+    categories: state.categories.get('types'),
   };
 }
 

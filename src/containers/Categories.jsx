@@ -3,8 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as ImmutablePropTypes from 'react-immutable-proptypes';
 
-// import Category from '../components/Category';
-
 const Categories = class extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +34,7 @@ Categories.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    categories: state.get('categories'),
+    categories: state.categories.get('types'),
   };
 }
 
