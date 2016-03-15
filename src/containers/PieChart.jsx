@@ -26,18 +26,25 @@ const Pie = class extends React.Component {
 
   updateGraphData(props) {
     // filter any non-categorized charges
-    const filteredData = props.charges.filter(charge => charge.get('category') !== '');
-    const size = filteredData.size;
+    const filteredData = props.charges.filter(charge => {
+      return charge.get('category') !== '' && charge.get('credit') !== '';
+    });
+
+    const totalCredit = filteredData.reduce((sum, charge) => {
+      return sum + parseFloat(charge.get('credit'));
+    }, 0);
 
     // Count number of charges per category
     const reducedData = filteredData.reduce((countedCategories, charge) => {
       const category = charge.get('category');
-      return countedCategories.update(category, 0, (count) => count + 1);
-    }, new Map()).map((count, category) => {
+      return countedCategories.update(category, 0, (count) => {
+        return count + parseFloat(charge.get('credit'));
+      });
+    }, new Map()).map((categoryTotal, category) => {
       // format into d3 state
       return {
         label: category,
-        value: parseFloat(((count / size) * 100.0).toFixed(2)),
+        value: parseFloat(((categoryTotal / totalCredit) * 100.0).toFixed(2)),
       };
     }).toList().toJS();
 
@@ -50,16 +57,8 @@ const Pie = class extends React.Component {
     return (
       <div className="col-12 border">
         <h3 className="h1 m0 p2 bg-blue white">Graph</h3>
-        <div className="mx-auto" style={styles}>
-          <PieChart
-            data={this.state.graphData}
-            width={d3Config.width}
-            height={d3Config.height}
-            radius={d3Config.radius}
-            innerRadius={d3Config.innerRadius}
-            sectorBorderColor={d3Config.sectorBorderColor}
-            title={d3Config.title}
-          />
+        <div className="mx-auto" {...styles}>
+          <PieChart {...d3Config} data={this.state.graphData}/>
         </div>
       </div>
     );
@@ -70,13 +69,15 @@ const d3Config = {
   height: 650,
   width: 650,
   radius: 250,
-  innerRadius: 10,
+  innerRadius: 40,
   sectorBorderColor: 'white',
   title: 'Categories',
 };
 
 const styles = {
-  maxWidth: '650px',
+  style: {
+    maxWidth: '650px',
+  },
 };
 
 Pie.propTypes = {

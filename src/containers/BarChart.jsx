@@ -69,16 +69,8 @@ const Bar = class extends React.Component {
     return (
       <div className="col-12 border">
         <h3 className="h1 m0 p2 bg-blue white">Graph</h3>
-        <div className="mx-auto" style={styles}>
-          <BarChart
-            data={this.state.barData}
-            width={d3Config.width}
-            height={d3Config.height}
-            fill={d3Config.fill}
-            title={d3Config.title}
-            xAxisLabel={d3Config.xAxisLabel}
-            yAxisLabel={d3Config.yAxisLabel}
-          />
+        <div className="mx-auto" {...styles}>
+          <BarChart {...d3Config} data={this.state.barData}/>
         </div>
       </div>
     );
@@ -95,7 +87,9 @@ const d3Config = {
 };
 
 const styles = {
-  maxWidth: '800px',
+  style: {
+    maxWidth: '800px',
+  },
 };
 
 Bar.propTypes = {
