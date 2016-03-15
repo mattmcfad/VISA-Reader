@@ -6,7 +6,7 @@ import * as ImmutablePropTypes from 'react-immutable-proptypes';
 
 import { PieChart } from 'react-d3';
 
-const Graph = class extends React.Component {
+const Pie = class extends React.Component {
   constructor(props) {
     super(props);
 
@@ -50,7 +50,7 @@ const Graph = class extends React.Component {
     return (
       <div className="col-12 border">
         <h3 className="h1 m0 p2 bg-blue white">Graph</h3>
-        <div className="">
+        <div className="mx-auto" style={styles}>
           <PieChart
             data={this.state.graphData}
             width={d3Config.width}
@@ -67,15 +67,19 @@ const Graph = class extends React.Component {
 };
 
 const d3Config = {
-  height: 800,
-  width: 800,
-  radius: 200,
-  innerRadius: 15,
+  height: 650,
+  width: 650,
+  radius: 250,
+  innerRadius: 10,
   sectorBorderColor: 'white',
-  title: 'Pie Chart',
+  title: 'Categories',
 };
 
-Graph.propTypes = {
+const styles = {
+  maxWidth: "650px",
+}
+
+Pie.propTypes = {
   charges: ImmutablePropTypes.list,
 };
 
@@ -85,4 +89,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Graph);
+export default connect(mapStateToProps)(Pie);
