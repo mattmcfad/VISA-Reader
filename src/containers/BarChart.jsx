@@ -42,7 +42,7 @@ const Bar = class extends React.Component {
   updateGraphData(props) {
     // filter any non-categorized charges
     const filteredData = props.charges.filter(charge => {
-      return charge.get('category') !== '' && charge.get('credit') !== ''
+      return charge.get('category') !== '' && charge.get('credit') !== '';
     });
 
     // Count number of sum of charges per category
@@ -95,8 +95,8 @@ const d3Config = {
 };
 
 const styles = {
-  maxWidth: "800px",
-}
+  maxWidth: '800px',
+};
 
 Bar.propTypes = {
   charges: ImmutablePropTypes.list,

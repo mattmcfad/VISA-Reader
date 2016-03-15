@@ -76,8 +76,8 @@ const d3Config = {
 };
 
 const styles = {
-  maxWidth: "650px",
-}
+  maxWidth: '650px',
+};
 
 Pie.propTypes = {
   charges: ImmutablePropTypes.list,
