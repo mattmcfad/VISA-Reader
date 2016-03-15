@@ -67,8 +67,8 @@ const Pie = class extends React.Component {
 
 const d3Config = {
   height: 650,
-  width: 650,
-  radius: 250,
+  width: 700,
+  radius: 225,
   innerRadius: 40,
   sectorBorderColor: 'white',
   title: 'Categories',

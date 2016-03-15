@@ -48,7 +48,9 @@ const Bar = class extends React.Component {
     // Count number of sum of charges per category
     const reducedData = filteredData.reduce((countedCategories, charge) => {
       const category = charge.get('category');
-      return countedCategories.update(category, 0, (sum) => sum + parseFloat(charge.get('credit')));
+      return countedCategories.update(category, 0, (sum) => {
+        return sum + parseFloat(charge.get('credit'));
+      });
     }, new Map()).map((sum, category) => {
       return {
         'x': category,
