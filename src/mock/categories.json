@@ -1,15 +1,15 @@
 [
-	"Food",
-	"Coffee",
-	"Transportation",
-	"Restaurant",
-	"Bar",
-	"Alcohol",
-	"Optometrist",
-	"Dentist",
-	"TTC",
-	"Internet",
-	"Clothes",
-	"Shoes",
-	"Miscellaneous"
+  "Groceries",
+  "Lunch",
+  "Coffee / Breakfast",
+  "Takeout Dinner",
+  "Restaurant",
+  "Bar",
+  "Alcohol",
+  "Doctors",
+  "Apartment",
+  "Clothes",
+  "Fitness",
+  "Transportation",
+  "Miscellaneous"
 ]
