@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import * as ImmutablePropTypes from 'react-immutable-proptypes';
 
-import BarChart from './BarChart';
-import PieChart from './PieChart';
+import { BarChart, PieChart } from '../components';
 
 const Chart = class extends React.Component {
   constructor(props) {
@@ -14,8 +13,13 @@ const Chart = class extends React.Component {
     this.state = {
       chartType: 'pie',
       graphData: [],
+      size: 500,
     };
     this.updateGraphData = this.updateGraphData.bind(this);
+  }
+  componentDidMount() {
+    const size = this.refs.container.offsetWidth;
+    this.setState({ size }, () => console.log('asssd', size));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -72,20 +76,20 @@ const Chart = class extends React.Component {
       graphData = [];
     }
 
-    this.setState({ graphData, chartType: chartType }, ()=> console.log(this.state));
+    this.setState({ graphData, chartType});
   }
 
   render() {
     const chart = (this.state.chartType === 'pie'
-      ? <PieChart graphData={this.state.graphData} />
-      : <BarChart graphData={this.state.graphData} />
+      ? <PieChart graphData={this.state.graphData} size={this.state.size}/>
+      : <BarChart graphData={this.state.graphData} size={this.state.size}/>
     );
 
     const leftBtn = this.state.chartType === 'pie' ? 'btn-primary' : 'btn-outline';
     const rightBtn = this.state.chartType === 'bar' ? 'btn-primary' : 'btn-outline';
 
     return (
-      <div className="border col-12">
+      <div className="border col-12" ref="container">
         <div className="white">
           <h3 className="h5 mt0 p1 bg-blue">Graph</h3>
           <div className="inline-block clearfix blue">
@@ -101,7 +105,7 @@ const Chart = class extends React.Component {
               Bar Chart</button>
           </div>
         </div>
-        <div className="mx-auto" {...styles}>
+        <div className="mx-auto px2" {...styles}>
           { chart }
         </div>
       </div>
@@ -110,9 +114,7 @@ const Chart = class extends React.Component {
 };
 
 const styles = {
-  style: {
-    maxWidth: '650px',
-  },
+  style: {},
 };
 
 Chart.propTypes = {

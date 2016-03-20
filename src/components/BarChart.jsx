@@ -10,19 +10,19 @@ const Bar = class extends React.Component {
   }
 
   render() {
+    const size = this.props.size;
     return (
-      <div className="col-12 border">
-        <div className="mx-auto" {...styles}>
-          <BarChart {...d3Config} data={this.props.graphData}/>
-        </div>
-      </div>
+      <BarChart
+        data={this.props.graphData}
+        width={size}
+        height={size}
+        {...d3Config}
+      />
     );
   }
 };
 
 const d3Config = {
-  width: 800,
-  height: 800,
   fill: 'blue',
   title: 'Bar Chart',
   xAxisLabel: 'Categories',
@@ -30,14 +30,13 @@ const d3Config = {
 };
 
 const styles = {
-  style: {
-    maxWidth: '800px',
-  },
+  style: {},
 };
 
 Bar.propTypes = {
   charges: ImmutablePropTypes.list,
   graphData: PropTypes.array,
+  size: PropTypes.number,
 };
 
 export default Bar;

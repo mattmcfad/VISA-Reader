@@ -10,34 +10,34 @@ const Pie = class extends React.Component {
   }
 
   render() {
+    const size = this.props.size;
+    const radius = ( size / 2 ) - 100;
     return (
-      <div ref="container" className="border col-12">
-        <div className="mx-auto" {...styles}>
-          <PieChart {...d3Config} data={this.props.graphData}/>
-        </div>
-      </div>
+      <PieChart
+        data={this.props.graphData}
+        width={size}
+        height={size}
+        radius={radius}
+        {...d3Config}
+      />
     );
   }
 };
 
 const d3Config = {
-  height: 350,
-  width: 400,
-  radius: 100,
   innerRadius: 20,
   sectorBorderColor: 'white',
   title: '',
 };
 
 const styles = {
-  style: {
-    maxWidth: '650px',
-  },
+  style: {},
 };
 
 Pie.propTypes = {
   charges: ImmutablePropTypes.list,
   graphData: PropTypes.array,
+  size: PropTypes.number,
 };
 
 export default Pie;
