@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as ImmutablePropTypes from 'react-immutable-proptypes';
 import Charge from '../components/Charge';
 
-const Chart = class extends React.Component {
+const TransactionList = class extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -24,7 +24,7 @@ const Chart = class extends React.Component {
               <th className="col-3 pl0 center">Category</th>
             </tr>
           </thead>
-          <tbody className="overflow-scroll block" style={ styles }>
+          <tbody className="block" style={ styles }>
             {this.getData().map(charge =>
               <Charge key={charge.get('id')}
                 date={charge.get('date')}
@@ -41,10 +41,10 @@ const Chart = class extends React.Component {
 };
 
 const styles = {
-  maxHeight: '400px',
+
 };
 
-Chart.propTypes = {
+TransactionList.propTypes = {
   charges: ImmutablePropTypes.list,
 };
 
@@ -54,4 +54,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Chart);
+export default connect(mapStateToProps)(TransactionList);

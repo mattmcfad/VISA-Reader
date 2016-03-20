@@ -55,8 +55,8 @@ const Pie = class extends React.Component {
 
   render() {
     return (
-      <div className="col-12 border">
-        <h3 className="h1 m0 p2 bg-blue white">Graph</h3>
+      <div ref="container" className="border">
+        <h3 className="h2 m0 p1 bg-blue white">Graph</h3>
         <div className="mx-auto" {...styles}>
           <PieChart {...d3Config} data={this.state.graphData}/>
         </div>
@@ -66,12 +66,12 @@ const Pie = class extends React.Component {
 };
 
 const d3Config = {
-  height: 650,
-  width: 700,
-  radius: 225,
-  innerRadius: 40,
+  height: 350,
+  width: 400,
+  radius: 100,
+  innerRadius: 20,
   sectorBorderColor: 'white',
-  title: 'Categories',
+  title: '',
 };
 
 const styles = {
