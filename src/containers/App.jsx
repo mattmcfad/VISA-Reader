@@ -1,24 +1,24 @@
 import React from 'react';
-import TransactionList from './TransactionList';
+
+import FileInput from '../components/FileInput';
+import Charts from './Charts';
 import CategoryList from './CategoryList';
+import TransactionList from './TransactionList';
 
 // import AddCharge from './AddCharge';
-import PieChart from './PieChart';
-// import BarChart from './BarChart';
+
 // import Categories from './Categories';
-import FileInput from '../components/FileInput';
 
 const App = () => {
   return (
     <div className="col-12">
       <div className="wrapper col-10 mx-auto">
         <h1 className="blue pl2">TD VISA READER 💳🔍</h1>
+        <FileInput />
         <div className="flex">
-            <PieChart/>
-            { /* <BarChart /> */ }
+            <Charts />
             <CategoryList />
         </div>
-        <FileInput />
         <TransactionList />
         { /* <Categories /> */}
         { /* <AddCharge /> */ }

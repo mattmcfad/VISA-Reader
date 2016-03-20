@@ -14,7 +14,7 @@ const TransactionList = class extends React.Component {
 
   render() {
     return (
-      <section className="col-12">
+      <section className="">
         <table className="border">
           <thead className="white bg-blue">
             <tr className="flex left-align rounded bold">

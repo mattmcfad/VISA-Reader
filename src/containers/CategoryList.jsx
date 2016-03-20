@@ -91,7 +91,7 @@ const CategoryList = class extends React.Component {
 
 const styles = {
   style: {
-    'flex-direction': 'row-reverse',
+    'flexDirection': 'row-reverse',
   },
 };
 
