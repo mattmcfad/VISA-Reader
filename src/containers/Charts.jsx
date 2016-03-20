@@ -19,7 +19,7 @@ const Chart = class extends React.Component {
   }
   componentDidMount() {
     const size = this.refs.container.offsetWidth;
-    this.setState({ size }, () => console.log('asssd', size));
+    this.setState({ size });
   }
 
   componentWillReceiveProps(nextProps) {

@@ -10,8 +10,8 @@ const CategoryList = class extends React.Component {
     this.state = {
       categories: [{
         name: 'apartment',
-        percent: '100%',
-        amount: '$ 100.00',
+        percent: '100',
+        amount: '100.00',
       }],
       totalCredit: 100.00,
       uncategorizedCredit: 15.00,
@@ -41,16 +41,18 @@ const CategoryList = class extends React.Component {
     }, new Map()).map((categoryTotal, category) => {
       return {
         name: category,
-        percent: ((categoryTotal / totalCredit) * 100.0).toFixed(2) + '%',
-        amount: '$' + categoryTotal.toFixed(2),
+        percent: ((categoryTotal / totalCredit) * 100.0).toFixed(2),
+        amount: categoryTotal.toFixed(2),
       };
-    }).toList().toJS();
+    }).toList().sort((prev, next) => {
+      return parseFloat(next.amount) > parseFloat(prev.amount) ? 1 : -1;
+    });
 
     const uncategorizedCredit = props.charges.filter(charge => {
       return charge.get('category') === '' && charge.get('credit') !== '';
     }).reduce((sum, charge) => {
       return sum + parseFloat(charge.get('credit'));
-    }, 0 );
+    }, 0);
 
     this.setState({
       categories: reducedData,
@@ -74,8 +76,8 @@ const CategoryList = class extends React.Component {
             {this.state.categories.map((category, index) =>
               <tr key={index}>
                 <td className="">{category.name}</td>
-                <td className="">{category.percent}</td>
-                <td className="">{category.amount}</td>
+                <td className="">{category.percent} %</td>
+                <td className="">$ {category.amount}</td>
               </tr>
             )}
           </tbody>
