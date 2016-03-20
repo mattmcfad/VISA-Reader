@@ -29,10 +29,6 @@ const d3Config = {
   yAxisLabel: '$',
 };
 
-const styles = {
-  style: {},
-};
-
 Bar.propTypes = {
   charges: ImmutablePropTypes.list,
   graphData: PropTypes.array,

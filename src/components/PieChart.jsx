@@ -30,10 +30,6 @@ const d3Config = {
   title: '',
 };
 
-const styles = {
-  style: {},
-};
-
 Pie.propTypes = {
   charges: ImmutablePropTypes.list,
   graphData: PropTypes.array,
