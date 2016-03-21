@@ -22,6 +22,23 @@ export const addCreditCharge = (charge) => {
   };
 };
 
+export function addCategoryToChargeAndDictionary(chargeDescription, category) {
+  return (dispatch) => {
+    dispatch(addDictionaryEntry(chargeDescription, category));
+    dispatch(updateChargesWithCategory(chargeDescription, category));
+  };
+}
+
+export function updateChargesWithCategory(chargeDescription, category) {
+  return {
+    type: 'UPDATE_CHARGES_WITH_CATEGORY',
+    payload: {
+      chargeDescription,
+      category,
+    },
+  };
+}
+
 export const addCategoryToCharge = (chargeDescription, category) => {
   return {
     type: 'ADD_CATEGORY_TO_CHARGE',
@@ -44,12 +61,15 @@ export const setDictionary = (dictionary) => {
   };
 };
 
-export const addDictionaryEntry = (entry) => {
+export function addDictionaryEntry(chargeDescription, category) {
   return {
     type: 'ADD_DICTIONARY_ENTRY',
-    entry,
+    payload: {
+      chargeDescription,
+      category,
+    },
   };
-};
+}
 
 export function startLoading() {
   return {
