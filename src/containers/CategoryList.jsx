@@ -9,12 +9,9 @@ const CategoryList = class extends React.Component {
 
     this.state = {
       categories: [{
-        name: 'apartment',
-        percent: '100',
-        amount: '100.00',
       }],
-      totalCredit: 100.00,
-      uncategorizedCredit: 15.00,
+      totalCredit: 0,
+      uncategorizedCredit: 0,
     };
 
     this.getData = this.getData.bind(this);
