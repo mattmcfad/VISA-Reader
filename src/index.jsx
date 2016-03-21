@@ -8,13 +8,13 @@ import { setCategories, setDictionary } from './actions';
 
 // import mockCharges from './mock/charges.json';
 import mockCategories from './mock/categories.json';
-import mockDictionary from './mock/dictionary.json';
+// import mockDictionary from './mock/dictionary.json';
 
 const store = makeStore();
 
 // store.dispatch(setCredit(mockCharges));
 store.dispatch(setCategories(mockCategories));
-store.dispatch(setDictionary(mockDictionary));
+// store.dispatch(setDictionary(mockDictionary));
 
 import App from './containers/App';
 
