@@ -9,10 +9,9 @@ export const setDictionary = (state, dictionary) => {
 };
 
 export const addDictionaryEntry = (state, entry) => {
-  const dictionary = state.get('entries', Map());
-
+  const dictionary = state.get('entries', new Map());
   return setDictionary(state,
-    dictionary.set(entry.chargeDescription, fromJS(entry.chargeType))
+    dictionary.setIn([entry.chargeDescription, 'category'], fromJS(entry.category))
   );
 };
 
@@ -21,7 +20,7 @@ export default function dictionaryReducer(state = INITIAL_STATE, action = {}) {
   case 'SET_DICTIONARY':
     return setDictionary(state, action.dictionary);
   case 'ADD_DICTIONARY_ENTRY':
-    return addDictionaryEntry(state, action.entry);
+    return addDictionaryEntry(state, action.payload);
   default:
     return state;
   }

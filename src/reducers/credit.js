@@ -14,8 +14,7 @@ export const addBatchCreditCharge = (state, charges) => {
 };
 
 export const addCreditCharge = (state, charge) => {
-  const oldCharges = state.get('credit', List());
-  const charges = oldCharges.push(fromJS(charge));
+  const charges = state.get('credit', List()).push(fromJS(charge));
 
   return state.get('dictionary').has(charge.description)
     ? addCategoryToCharge(
@@ -26,14 +25,14 @@ export const addCreditCharge = (state, charge) => {
     : setCredit(state, charges);
 };
 
-export const addCategoryToCharge = (state, chargeDescription, category) => {
+export function updateChargesWithCategory(state, payload) {
   const charges = state.get('charges', List()).map(charge => {
-    return charge.get('description') === chargeDescription
-      ? charge.set('category', category)
+    return charge.get('description') === payload.chargeDescription
+      ? charge.set('category', payload.category)
       : charge;
   });
   return setCredit(state, charges);
-};
+}
 
 
 export default function creditReducer(state = INITIAL_STATE, action) {
@@ -46,6 +45,8 @@ export default function creditReducer(state = INITIAL_STATE, action) {
     return addCreditCharge(state, action.charge);
   case 'ADD_CATEGORY_TO_CHARGE':
     return addCategoryToCharge(state, action.chargeDescription, action.category);
+  case 'UPDATE_CHARGES_WITH_CATEGORY':
+    return updateChargesWithCategory(state, action.payload);
   default:
     return state;
   }
