@@ -36,10 +36,9 @@ const Charge = class extends React.Component {
 
     return (
       <tr className={`flex border-bottom py1`}>
-        <td className="col-2">{this.props.date}</td>
+        <td className="col-2 center">{this.props.date}</td>
         <td className="col-5">{this.props.description}</td>
-        <td className="col-2">{this.props.credit}</td>
-        <td className="col-3 p0">
+        <td className="col-3 p0 center">
           <Select
             clearable={false}
             placeholder={' --- Select --- '}
@@ -50,6 +49,7 @@ const Charge = class extends React.Component {
             onChange={this.handleChange}
           />
         </td>
+        <td className="col-2 right-align pr3">{this.props.credit}</td>
       </tr>
     );
   }

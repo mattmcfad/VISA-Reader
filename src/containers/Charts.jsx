@@ -105,16 +105,12 @@ const Chart = class extends React.Component {
               Bar Chart</button>
           </div>
         </div>
-        <div className="mx-auto px2" {...styles}>
+        <div className="mx-auto px2">
           { chart }
         </div>
       </div>
     );
   }
-};
-
-const styles = {
-  style: {},
 };
 
 Chart.propTypes = {

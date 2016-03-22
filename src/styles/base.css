@@ -12,7 +12,7 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
   height: 50px;
-  background-color: rgba(0,116,217,1);
+  background-color: rgba(0,116,217,0.9);
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
@@ -20,11 +20,22 @@
    cursor: progress;
 }
 
+button.btn:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
 
 .Select .Select-placeholder {
   color: black;
 }
 
+.Select .Select-menu {
+  max-height: 400px;
+  background-color: rgba(0,116,217,0.9);
+}
+.Select .Select-menu-outer {
+  max-height: 400px;
+}
 
 /*  WIP !!!! todo: update designs*/
 
