@@ -36,7 +36,7 @@ const Charge = class extends React.Component {
 
     return (
       <tr className={`flex border-bottom py1`}>
-        <td className="col-2 center">{this.props.date}</td>
+        <td className="col-2 center">{new Date(this.props.date).toLocaleDateString()}</td>
         <td className="col-5">{this.props.description}</td>
         <td className="col-3 p0 center">
           <Select
