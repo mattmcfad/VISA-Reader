@@ -36,7 +36,7 @@ const Charge = class extends React.Component {
 
     return (
       <tr className={`flex border-bottom py1`}>
-        <td className="col-2 center">{this.props.date}</td>
+        <td className="col-2 center">{new Date(this.props.date).toLocaleDateString()}</td>
         <td className="col-5">{this.props.description}</td>
         <td className="col-3 p0 center">
           <Select
@@ -49,7 +49,7 @@ const Charge = class extends React.Component {
             onChange={this.handleChange}
           />
         </td>
-        <td className="col-2 right-align pr3">{this.props.credit}</td>
+        <td className="col-2 right-align pr3">$ {this.props.credit || 0}</td>
       </tr>
     );
   }
@@ -62,7 +62,7 @@ Charge.propTypes = {
   description: PropTypes.string,
   category: PropTypes.string,
   date: PropTypes.string,
-  credit: PropTypes.string,
+  credit: PropTypes.number,
 };
 
 function mapStateToProps(state) {
