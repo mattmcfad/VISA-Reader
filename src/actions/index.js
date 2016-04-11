@@ -142,3 +142,19 @@ export function addCreditRequest(charges) {
     }).catch(err => dispatch(doneLoading(err)));
   };
 }
+
+export function getCredit() {
+  return (dispatch) => {
+    fetch(url, {
+      method: 'get',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    }).then((res) => res.json()).then(res => {
+      if (res && res.length > 0) {
+        dispatch(addBatchCreditCharge(res));
+      }
+      return dispatch(doneLoading());
+    }).catch(err => dispatch(doneLoading(err)));
+  };
+}
