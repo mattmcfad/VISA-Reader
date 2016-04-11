@@ -49,7 +49,7 @@ const Charge = class extends React.Component {
             onChange={this.handleChange}
           />
         </td>
-        <td className="col-2 right-align pr3">{this.props.credit}</td>
+        <td className="col-2 right-align pr3">$ {this.props.credit || 0}</td>
       </tr>
     );
   }
@@ -62,7 +62,7 @@ Charge.propTypes = {
   description: PropTypes.string,
   category: PropTypes.string,
   date: PropTypes.string,
-  credit: PropTypes.string,
+  credit: PropTypes.number,
 };
 
 function mapStateToProps(state) {

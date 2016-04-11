@@ -48,7 +48,7 @@ const CategoryList = class extends React.Component {
     const uncategorizedCredit = props.charges.filter(charge => {
       return charge.get('category') === '' && charge.get('credit') !== '';
     }).reduce((sum, charge) => {
-      return sum + parseFloat(charge.get('credit'));
+      return sum + parseFloat(charge.get('credit') || 0);
     }, 0);
 
     this.setState({
